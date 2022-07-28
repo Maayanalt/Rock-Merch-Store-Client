@@ -1,0 +1,24 @@
+#add-to-wishlist:hover,
+#add-to-wishlist:focus {
+  border-color: #e4dccf;
+  background-color: #e4dccf;
+  color: #576f72;
+}
+
+#add-to-wishlist {
+  border-color: #e4dccf;
+  color: #576f72;
+}
+
+#details {
+  padding: 20px;
+}
+
+#item {
+  height: 75vh;
+}
+
+#price {
+  font-size: 20px;
+  font-weight: 500;
+}

@@ -7,7 +7,7 @@ import {
   faCartShopping,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-// import ProductDetails from "./productDetails/ProductDetails.js";
+// import ProductDetails from "./components/ProductDetails";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InputGroup, Button, Form } from "react-bootstrap";
 // import Login from "./Login/Login";

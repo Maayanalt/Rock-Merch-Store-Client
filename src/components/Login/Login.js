@@ -1,4 +1,4 @@
-import inputTypes from "../DAL/dbForm";
+import inputTypes from "../../DAL/formData";
 import FormTemplate from "../Form/FormTemplate";
 import { Alert, Container } from "react-bootstrap";
 import "./Login.css";

@@ -1,6 +1,6 @@
 import { Row, Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import validate from "../common/validations";
+import validate from "../utilities/validations";
 import TextInput from "./TextInput";
 
 function FormTemplate(props) {

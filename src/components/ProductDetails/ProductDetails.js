@@ -9,13 +9,9 @@ import {
 import { useState } from "react";
 import "./ProductDetails.css";
 
-function ProductDetails() {
-  const radios = [
-    { name: "XS", value: "XS" },
-    { name: "S", value: "S" },
-    { name: "M", value: "M" },
-    { name: "L", value: "L" },
-  ];
+function ProductDetails({ sizes, img, alt, title, description, price }) {
+  // sizes = [{value: 'XS', disabled: true/false}...]
+  const radios = sizes;
 
   const [radioValue, setRadioValue] = useState("1");
 
@@ -23,17 +19,19 @@ function ProductDetails() {
     <Container className="px-4" id="item">
       <Row className="gx-5">
         <Col className="d-flex justify-content-center">
-          <img src="adtr.JPG" width="300px" alt="t-shirt" />
+          <img src={img} width="300px" alt={alt} />
         </Col>
-        <Col className="d-grid gap-2" id="details">
-          <h1>I JUST WANNA GO HOME TIE DYE TEE</h1>
-          <span id="price">$30</span>
-          <span>size</span>
+        <Col className="d-flex flex-column" id="details">
+          <h1>{title}</h1>
+          <p>{description}</p>
+          <span id="price">${price}</span>
+          <span className="my-1">size</span>
           <div>
             <ToggleButtonGroup type="radio" name="size" required>
               {radios.map((radio, idx) => (
                 <ToggleButton
                   key={idx}
+                  disabled={radio.disabled}
                   id={`radio-${idx}`}
                   type="radio"
                   variant="outline-dark"
@@ -43,12 +41,12 @@ function ProductDetails() {
                   className="shadow-none me-1"
                   onChange={(e) => setRadioValue(e.currentTarget.value)}
                 >
-                  {radio.name}
+                  {radio.value}
                 </ToggleButton>
               ))}
             </ToggleButtonGroup>
           </div>
-          <Col md="6" className="d-grid gap-2">
+          <Col md="6" className="d-flex flex-column gap-2 mt-3">
             <div>
               <Button
                 variant="outline-secondary"

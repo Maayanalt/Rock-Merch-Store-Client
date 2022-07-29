@@ -1,0 +1,15 @@
+.alert {
+  margin: auto;
+  background-color: #e4dccf;
+  border-color: white;
+}
+
+.alert-heading {
+  text-align: center;
+  margin: 0;
+}
+
+#submit {
+  background-color: #576f72;
+  border-color: #576f72;
+}

@@ -8,19 +8,16 @@ footer {
   bottom: 0;
 }
 
-#logo {
+/* #logo {
   max-width: 15%;
-}
+} */
 
-#navbar,
-#add-to-cart:focus,
-#add-to-cart:hover {
+#navbar {
   background-color: #576f72;
 }
 
 #button-search:hover,
-#button-search:focus,
-#add-to-cart {
+#button-search:focus {
   background-color: #7d9d9c;
   color: white;
 }
@@ -28,4 +25,58 @@ footer {
 #button-search {
   border-color: #576f72;
   color: #576f72;
+}
+
+@media (max-width: 576px) {
+  header {
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+
+  #search {
+    width: 100%;
+  }
+  #logo {
+    margin: auto;
+    width: 50%;
+  }
+}
+
+@media (min-width: 576px) {
+  #search {
+    width: 50%;
+  }
+  #logo {
+    width: 30%;
+  }
+}
+
+@media (min-width: 768px) {
+  #search {
+    width: 45%;
+  }
+  #logo {
+    width: 23%;
+  }
+}
+
+@media (min-width: 992px) {
+  .w-lg-75 {
+    width: 75% !important;
+  }
+  #search {
+    width: 40%;
+  }
+  #logo {
+    width: 18%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #search {
+    width: 30%;
+  }
+  #logo {
+    width: 15%;
+  }
 }

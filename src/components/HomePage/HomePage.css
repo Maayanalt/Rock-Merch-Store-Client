@@ -1,0 +1,111 @@
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:not(:first-child) {
+  margin-top: 5px;
+}
+
+a:hover {
+  color: #576f72;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #000000;
+  background-color: white;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  background-color: #e4dccf;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: var(--bs-accordion-btn-icon);
+}
+
+.add-to-cart:focus,
+.add-to-cart:hover {
+  background-color: #576f72;
+}
+
+.add-to-cart {
+  background-color: #7d9d9c;
+  color: white;
+}
+
+#categories {
+  border: #576f72 solid 1px;
+  border-radius: 5px;
+}
+
+.wishlist {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.card-img-top {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 90vw;
+  }
+  .wishlist {
+    width: 13vw;
+    height: 8vh;
+  }
+}
+
+@media (min-width: 576px) {
+  .card-img-top {
+    height: 40vw;
+  }
+  .wishlist {
+    width: 6vw;
+    height: 6vh;
+  }
+  .card-title {
+    height: 33%;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-img-top {
+    height: 30vw;
+  }
+  .wishlist {
+    width: 5vw;
+    height: 7vh;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-img-top {
+    height: 22vw;
+  }
+  .wishlist {
+    width: 4vw;
+    height: 7vh;
+  }
+  .card-title {
+    height: 44%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wishlist {
+    width: 4vw;
+    height: 7vh;
+  }
+
+  .card-title {
+    height: 40%;
+  }
+}

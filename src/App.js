@@ -1,7 +1,8 @@
-import ProductDetails from "./components/ProductDetails/ProductDetails";
 import NavbarComp from "./components/Navbar/NavbarComp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InputGroup, Button, Form } from "react-bootstrap";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
 import "./App.css";
 
@@ -26,7 +27,12 @@ function App() {
         </InputGroup>
       </header>
       <NavbarComp></NavbarComp>
-      <main></main>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </main>
       <footer>
         <p>©2022 Built by Maayan Altarac</p>
       </footer>

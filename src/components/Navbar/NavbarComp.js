@@ -9,6 +9,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import "./NavbarComp.css";
+import { Link } from "react-router-dom";
 
 function NavbarComp() {
   return (
@@ -25,7 +26,7 @@ function NavbarComp() {
         </Navbar.Toggle>
         <Navbar.Collapse className="justify-content-between" id="navbarToggler">
           <Nav>
-            <Nav.Link className="active" href="#">
+            <Nav.Link className="active" as={Link} to="/">
               <FontAwesomeIcon
                 icon={faHouse}
                 className="pe-2 pe-sm-2"
@@ -46,7 +47,11 @@ function NavbarComp() {
               ></FontAwesomeIcon>
               Contact us
             </Nav.Link>
-            <Nav.Link className="active d-inline-block d-sm-none" href="#">
+            <Nav.Link
+              className="active d-inline-block d-sm-none"
+              as={Link}
+              to="/login"
+            >
               <FontAwesomeIcon
                 icon={faUser}
                 className="pe-2 pe-sm-0"
@@ -70,7 +75,7 @@ function NavbarComp() {
           </Nav>
         </Navbar.Collapse>
         <Nav className="d-none d-sm-flex">
-          <Nav.Link className="active" href="#">
+          <Nav.Link className="active" as={Link} to="/login">
             <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
           </Nav.Link>
           <Nav.Link className="active" href="#">

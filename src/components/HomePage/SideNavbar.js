@@ -8,9 +8,9 @@ function SideNavbar({ categories }) {
           <Accordion.Header>{category.name}</Accordion.Header>
           <Accordion.Body className="d-flex flex-column">
             <a href="...">All {category.name}</a>
-            {category.children.map((name, idx) => (
+            {category.childCategories.map((child, idx) => (
               <a href="..." key={idx}>
-                {name}
+                {child.name}
               </a>
             ))}
           </Accordion.Body>

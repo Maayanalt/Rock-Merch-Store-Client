@@ -38,7 +38,7 @@ function HomePage({ products, categories }) {
             <ProductCard
               key={idx}
               images={product.images}
-              title={product.title}
+              title={product.name}
               price={product.price}
             ></ProductCard>
           ))}

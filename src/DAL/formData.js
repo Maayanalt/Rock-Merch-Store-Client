@@ -1,19 +1,19 @@
 import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 
 const inputTypes = {
-  username: {
+  email: {
     value: "",
     validation: {
       required: true,
-      minLength: 2,
+      pattern: /(.+)@(.+){2,}\.(.+){2,}/,
     },
     errors: [],
-    label: "Username",
+    label: "Email",
     icon: faUser,
     attr: {
       type: "text",
-      placeholder: "Enter Username",
-      name: "username",
+      placeholder: "Enter Email",
+      name: "email",
     },
   },
   password: {

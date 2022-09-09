@@ -3,8 +3,8 @@ import { useState } from "react";
 import validate from "../../utilities/validations";
 import TextInput from "./TextInput";
 
-function FormTemplate(props) {
-  const [formData, setFormData] = useState(props.inputs);
+function FormTemplate({ inputs, submit, postToServer }) {
+  const [formData, setFormData] = useState(inputs);
   const texts = [];
   const select = [];
 
@@ -44,7 +44,7 @@ function FormTemplate(props) {
         return "";
       }
     }
-    props.func(formData);
+    postToServer(formData);
   }
 
   return (
@@ -64,7 +64,7 @@ function FormTemplate(props) {
         variant="dark"
         id="submit"
       >
-        {props.submit ? props.submit : "submit"}
+        {submit ? submit : "submit"}
       </Button>
     </Form>
   );

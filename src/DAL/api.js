@@ -13,3 +13,16 @@ export async function getProducts() {
   products = await products.json();
   return products;
 }
+
+export async function postLogin(email, password) {
+  const data = { email, password };
+  const response = await fetch("http://localhost:3200/api/users/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (response.status === 200) return true;
+  return false;
+}

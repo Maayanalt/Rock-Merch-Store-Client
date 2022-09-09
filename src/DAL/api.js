@@ -18,6 +18,7 @@ export async function postLogin(email, password) {
   const data = { email, password };
   const response = await fetch("http://localhost:3200/api/users/login", {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },

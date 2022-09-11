@@ -81,7 +81,9 @@ function Cart() {
         <Card.Header as="h5">Order Summary</Card.Header>
         <Card.Body className="d-flex justify-content-between align-items-center">
           <Card.Text>Subtotal: ${subtotal}</Card.Text>
-          <Button variant="primary">Checkout</Button>
+          <Button variant="outline-secondary" id="checkout">
+            Checkout
+          </Button>
         </Card.Body>
       </Card>
     </div>

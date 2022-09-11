@@ -2,6 +2,12 @@
   cursor: pointer;
 }
 
-/* #table {
-  width: 300px;
-} */
+#checkout:focus,
+#checkout:hover {
+  background-color: #576f72;
+}
+
+#checkout {
+  background-color: #7d9d9c;
+  color: white;
+}

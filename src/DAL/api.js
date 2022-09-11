@@ -27,3 +27,9 @@ export async function postLogin(email, password) {
   if (response.status === 200) return true;
   return false;
 }
+
+export async function getCart() {
+  let cart = await fetch("http://localhost:3200/api/users/cart");
+  cart = await cart.json();
+  return cart;
+}

@@ -26,21 +26,21 @@ function NavbarComp() {
         </Navbar.Toggle>
         <Navbar.Collapse className="justify-content-between" id="navbarToggler">
           <Nav>
-            <Nav.Link className="active" as={Link} to="/">
+            <Nav.Link className="active mt-0" as={Link} to="/">
               <FontAwesomeIcon
                 icon={faHouse}
                 className="pe-2 pe-sm-2"
               ></FontAwesomeIcon>
               Home
             </Nav.Link>
-            <Nav.Link className="active" href="#">
+            <Nav.Link className="active mt-0" href="#">
               <FontAwesomeIcon
                 icon={faCircleInfo}
                 className="pe-2 pe-sm-2"
               ></FontAwesomeIcon>
               About
             </Nav.Link>
-            <Nav.Link className="active" href="#">
+            <Nav.Link className="active mt-0" href="#">
               <FontAwesomeIcon
                 icon={faEnvelope}
                 className="pe-2 pe-sm-2"
@@ -48,7 +48,7 @@ function NavbarComp() {
               Contact us
             </Nav.Link>
             <Nav.Link
-              className="active d-inline-block d-sm-none"
+              className="active d-inline-block d-sm-none mt-0"
               as={Link}
               to="/login"
             >
@@ -58,14 +58,18 @@ function NavbarComp() {
               ></FontAwesomeIcon>
               My Account
             </Nav.Link>
-            <Nav.Link className="active d-inline-block d-sm-none" href="#">
+            <Nav.Link
+              className="active d-inline-block d-sm-none mt-0"
+              as={Link}
+              to="/cart"
+            >
               <FontAwesomeIcon
                 icon={faCartShopping}
                 className="pe-2 pe-sm-0"
               ></FontAwesomeIcon>
               My cart
             </Nav.Link>
-            <Nav.Link className="active d-inline-block d-sm-none" href="#">
+            <Nav.Link className="active d-inline-block d-sm-none mt-0" href="#">
               <FontAwesomeIcon
                 icon={faHeart}
                 className="pe-2 pe-sm-0"
@@ -75,13 +79,13 @@ function NavbarComp() {
           </Nav>
         </Navbar.Collapse>
         <Nav className="d-none d-sm-flex">
-          <Nav.Link className="active" as={Link} to="/login">
+          <Nav.Link className="active mt-0" as={Link} to="/login">
             <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
           </Nav.Link>
-          <Nav.Link className="active" href="#">
+          <Nav.Link className="active mt-0" as={Link} to="/cart">
             <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
           </Nav.Link>
-          <Nav.Link className="active" href="#">
+          <Nav.Link className="active mt-0" href="#">
             <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
           </Nav.Link>
         </Nav>

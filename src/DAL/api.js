@@ -29,7 +29,9 @@ export async function postLogin(email, password) {
 }
 
 export async function getCart() {
-  let cart = await fetch("http://localhost:3200/api/users/cart");
+  let cart = await fetch("http://localhost:3200/api/users/cart", {
+    credentials: "include",
+  });
   cart = await cart.json();
   return cart;
 }

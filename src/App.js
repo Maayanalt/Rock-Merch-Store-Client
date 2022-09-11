@@ -4,6 +4,7 @@ import { InputGroup, Button, Form } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
+import Cart from "./components/Cart/Cart";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -47,6 +48,7 @@ function App() {
             element={<HomePage products={products} categories={categories} />}
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
       <footer>

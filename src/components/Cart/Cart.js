@@ -2,9 +2,20 @@ import { Button, Card, Table } from "react-bootstrap";
 import CartCard from "./CartCard";
 import "./Cart.css";
 import { useEffect, useState } from "react";
+import { getCart } from "../../DAL/api";
 
-function Cart({ itemsDetails }) {
+function Cart() {
+  const [itemsDetails, setItemsDetails] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    async function getData() {
+      const data = await getCart();
+      setItemsDetails(data);
+    }
+
+    getData();
+  }, []);
 
   function calculateSubtotal() {
     const sum = itemsDetails.reduce(

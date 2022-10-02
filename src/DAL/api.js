@@ -35,3 +35,11 @@ export async function getCart() {
   cart = await cart.json();
   return cart;
 }
+
+export async function getWishlist() {
+  let wishlist = await fetch("http://localhost:3200/api/users/wishlist", {
+    credentials: "include",
+  });
+  wishlist = await wishlist.json();
+  return wishlist;
+}

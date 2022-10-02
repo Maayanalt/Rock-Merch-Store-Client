@@ -1,0 +1,9 @@
+.add-to-cart:focus,
+.add-to-cart:hover {
+  background-color: #576f72;
+}
+
+.add-to-cart {
+  background-color: #7d9d9c;
+  color: white;
+}

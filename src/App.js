@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
 import Cart from "./components/Cart/Cart";
+import Wishlist from "./components/Wishlist/Wishlist";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -49,6 +50,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
       </main>
       <footer>

@@ -69,7 +69,11 @@ function NavbarComp() {
               ></FontAwesomeIcon>
               My cart
             </Nav.Link>
-            <Nav.Link className="active d-inline-block d-sm-none mt-0" href="#">
+            <Nav.Link
+              className="active d-inline-block d-sm-none mt-0"
+              as={Link}
+              to="/wishlist"
+            >
               <FontAwesomeIcon
                 icon={faHeart}
                 className="pe-2 pe-sm-0"
@@ -85,7 +89,7 @@ function NavbarComp() {
           <Nav.Link className="active mt-0" as={Link} to="/cart">
             <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
           </Nav.Link>
-          <Nav.Link className="active mt-0" href="#">
+          <Nav.Link className="active mt-0" as={Link} to="/wishlist">
             <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
           </Nav.Link>
         </Nav>

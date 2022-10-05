@@ -16,7 +16,7 @@ function Wishlist() {
     }
 
     getData();
-  });
+  }, []);
 
   return (
     <Card className="m-5">

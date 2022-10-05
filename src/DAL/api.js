@@ -37,7 +37,7 @@ export async function getCart() {
 }
 
 export async function getWishlist() {
-  let wishlist = await fetch("http://localhost:3200/api/users/wishlist", {
+  let wishlist = await fetch("http://localhost:3200/api/wishlist", {
     credentials: "include",
   });
   wishlist = await wishlist.json();

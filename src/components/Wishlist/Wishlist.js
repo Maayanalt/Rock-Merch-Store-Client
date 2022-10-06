@@ -5,13 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { getWishlist } from "../../DAL/api";
+import { useNavigate } from "react-router-dom";
 
 function Wishlist() {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getData() {
       const data = await getWishlist();
+      if (data.statusCode === 403) {
+        navigate("/login");
+      }
       setItems(data);
     }
 

@@ -29,17 +29,23 @@ export async function postLogin(email, password) {
 }
 
 export async function getCart() {
-  let cart = await fetch("http://localhost:3200/api/users/cart", {
+  const res = await fetch("http://localhost:3200/api/users/cart", {
     credentials: "include",
   });
-  cart = await cart.json();
+  if (res.status === 403) {
+    alert("You must log in first");
+  }
+  const cart = await res.json();
   return cart;
 }
 
 export async function getWishlist() {
-  let wishlist = await fetch("http://localhost:3200/api/wishlist", {
+  const res = await fetch("http://localhost:3200/api/wishlist", {
     credentials: "include",
   });
-  wishlist = await wishlist.json();
+  if (res.status === 403) {
+    alert("You must log in first");
+  }
+  const wishlist = await res.json();
   return wishlist;
 }

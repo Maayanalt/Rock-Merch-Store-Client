@@ -49,3 +49,17 @@ export async function getWishlist() {
   const wishlist = await res.json();
   return wishlist;
 }
+
+export async function postToWishlist(id) {
+  const response = await fetch("http://localhost:3200/api/wishlist", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ value: id }),
+  });
+  if (response.status === 201) return true;
+  if (response.status === 403) alert("You must log in first");
+  return false;
+}

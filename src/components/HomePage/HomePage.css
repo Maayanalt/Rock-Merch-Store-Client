@@ -48,6 +48,15 @@ a:hover {
   cursor: pointer;
 }
 
+.disappearing-alert {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+
 .card-img-top {
   width: 100%;
   object-fit: cover;

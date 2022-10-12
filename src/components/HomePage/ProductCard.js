@@ -1,10 +1,29 @@
-import { Card, Col, Carousel, Row, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Card, Col, Carousel, Row, Button, Alert } from "react-bootstrap";
 import { IoHeartCircleSharp } from "react-icons/io5";
+import { postToWishlist } from "../../DAL/api";
 
-function ProductCard({ images, title, price }) {
+function ProductCard({ images, title, price, productID }) {
+  const [alert, setAlert] = useState({ message: "", show: false });
+
+  async function addToWishlist() {
+    const success = await postToWishlist(productID);
+    if (success) {
+      setAlert({ message: "wishlist", show: true });
+      setTimeout(() => setAlert({ message: "", show: false }), 1500);
+    }
+  }
+
   return (
     <Col className="p-0">
       <Card className="p-1 h-100">
+        <Alert
+          variant="secondary"
+          show={alert.show}
+          className="disappearing-alert"
+        >
+          Added Item to {alert.message}
+        </Alert>
         <Carousel
           interval={null}
           variant="dark"
@@ -22,7 +41,10 @@ function ProductCard({ images, title, price }) {
             </Carousel.Item>
           ))}
         </Carousel>
-        <IoHeartCircleSharp className="wishlist"></IoHeartCircleSharp>
+        <IoHeartCircleSharp
+          className="wishlist"
+          onClick={addToWishlist}
+        ></IoHeartCircleSharp>
         <Card.Body className="card-body">
           <Card.Title className="card-title">{title}</Card.Title>
           <Card.Text className="card-text">${price}</Card.Text>

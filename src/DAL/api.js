@@ -63,3 +63,10 @@ export async function postToWishlist(id) {
   if (response.status === 403) alert("You must log in first");
   return false;
 }
+
+export async function deleteFromWishlist(id) {
+  fetch(`http://localhost:3200/api/wishlist/${id}`, {
+    method: "DELETE",
+    credentials: "include",
+  });
+}

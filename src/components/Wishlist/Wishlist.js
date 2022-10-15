@@ -4,12 +4,18 @@ import "./Wishlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import { getWishlist } from "../../DAL/api";
+import { deleteFromWishlist, getWishlist } from "../../DAL/api";
 import { useNavigate } from "react-router-dom";
 
 function Wishlist() {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
+
+  function onDelete(id) {
+    deleteFromWishlist(id);
+    const newItems = items.filter((item) => item.item.id !== id);
+    setItems(newItems);
+  }
 
   useEffect(() => {
     async function getData() {
@@ -33,6 +39,8 @@ function Wishlist() {
               <WishlistCard
                 title={item.item.name}
                 img={item.item.images[0]}
+                productID={item.item.id}
+                onDelete={onDelete}
               ></WishlistCard>
             </Col>
           ))

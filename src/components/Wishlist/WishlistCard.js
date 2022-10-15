@@ -1,6 +1,6 @@
 import { Button, Card, Col, Row } from "react-bootstrap";
 
-function WishlistCard({ title, img }) {
+function WishlistCard({ title, img, onDelete, productID }) {
   return (
     <Card className="mb-3">
       <Row className="p-2 align-items-stretch">
@@ -25,6 +25,7 @@ function WishlistCard({ title, img }) {
             <Button
               variant="outline-secondary"
               className="shadow-none px-2 py-1 col-lg-11"
+              onClick={() => onDelete(productID)}
             >
               Delete
             </Button>

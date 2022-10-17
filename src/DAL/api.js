@@ -29,7 +29,7 @@ export async function postLogin(email, password) {
 }
 
 export async function getCart() {
-  const res = await fetch("http://localhost:3200/api/users/cart", {
+  const res = await fetch("http://localhost:3200/api/cart", {
     credentials: "include",
   });
   if (res.status === 403) {

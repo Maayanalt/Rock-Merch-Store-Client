@@ -90,7 +90,7 @@ function Cart() {
         </Card.Body>
       </Card>
 
-      {itemsDetails.length && (
+      {itemsDetails.length ? (
         <Card className="m-5">
           <Card.Header as="h5">Order Summary</Card.Header>
           <Card.Body className="d-flex justify-content-between align-items-center">
@@ -100,6 +100,8 @@ function Cart() {
             </Button>
           </Card.Body>
         </Card>
+      ) : (
+        <div></div>
       )}
     </div>
   );

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Card, Col, Carousel, Row, Button, Alert } from "react-bootstrap";
 import { IoHeartCircleSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import { postToWishlist } from "../../DAL/api";
 
-function ProductCard({ images, title, price, productID }) {
+function ProductCard({ images, name, sizes, price, description, productID }) {
   const [alert, setAlert] = useState({ message: "", show: false });
 
   async function addToWishlist() {
@@ -46,7 +47,18 @@ function ProductCard({ images, title, price, productID }) {
           onClick={addToWishlist}
         ></IoHeartCircleSharp>
         <Card.Body className="card-body">
-          <Card.Title className="card-title">{title}</Card.Title>
+          <Link
+            to={`/item/${productID}`}
+            state={{
+              sizes,
+              images,
+              name,
+              description,
+              price,
+            }}
+          >
+            <Card.Title className="card-title">{name}</Card.Title>
+          </Link>
           <Card.Text className="card-text">${price}</Card.Text>
           <Row className="d-flex gap-1 justify-content-center">
             <Button

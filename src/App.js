@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
 import Cart from "./components/Cart/Cart";
 import Wishlist from "./components/Wishlist/Wishlist";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -51,6 +52,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/item/:id" element={<ProductDetails />} />
         </Routes>
       </main>
       <footer>

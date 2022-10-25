@@ -14,6 +14,12 @@ export async function getProducts() {
   return products;
 }
 
+export async function getOneProduct(id) {
+  let product = await fetch(`http://localhost:3200/api/items/${id}`);
+  product = await product.json();
+  return product;
+}
+
 export async function postLogin(email, password) {
   const data = { email, password };
   const response = await fetch("http://localhost:3200/api/users/login", {

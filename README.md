@@ -13,8 +13,10 @@ Requirements
 -Node.js
 -NPM
 
--/* First, Install the needed packages */
+'''
+/* First, Install the needed packages */
 npm install
 
--/* Then start the React app */
+/* Then start the React app */
 npm start
+'''

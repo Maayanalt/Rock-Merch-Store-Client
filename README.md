@@ -16,10 +16,10 @@ Requirements
 <br>
 -NPM
 
-'''
+```
 /* First, Install the needed packages */
 npm install
 
 /* Then start the React app */
 npm start
-'''
+```

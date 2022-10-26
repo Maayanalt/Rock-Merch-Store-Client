@@ -3,11 +3,11 @@
 The scope of the project is to develope internet store functionality for study purposes. Selling rock band merchandise, media and more.
 ## Built With
 
-*ReactJS
+* ReactJS
 <br>
-*Bootstrap
+* Bootstrap
 <br>
-*Font Awesome
+* Font Awesome
 
 ## Features
 The application displays an online store that contains products.

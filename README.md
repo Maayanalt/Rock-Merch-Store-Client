@@ -5,6 +5,7 @@ The scope of the project is to develope internet store functionality for study p
 ## Built With
 
 -ReactJS
+<br>
 -Bootstrap
 
 ### Build/Run

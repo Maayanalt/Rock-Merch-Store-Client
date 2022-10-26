@@ -4,17 +4,17 @@ The scope of the project is to develope internet store functionality for study p
 
 ## Built With
 
-ReactJS
-Bootstrap
+-ReactJS
+-Bootstrap
 
 ### Build/Run
 
 Requirements
-Node.js
-NPM
+-Node.js
+-NPM
 
-/* First, Install the needed packages */
+-/* First, Install the needed packages */
 npm install
 
-/* Then start the React app */
+-/* Then start the React app */
 npm start

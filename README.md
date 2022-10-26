@@ -11,7 +11,9 @@ The scope of the project is to develope internet store functionality for study p
 ### Build/Run
 
 Requirements
+<br>
 -Node.js
+<br>
 -NPM
 
 '''

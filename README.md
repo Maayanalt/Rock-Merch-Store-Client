@@ -15,5 +15,7 @@ Users can do the following:
 * Browse available products from home page
 * Add products to the wishlist (a user must be logged in)
 * Remove products from the wishlist (a user must be logged in)
+* Add products to the cart (a user must be logged in)
+* edit cart (a user must be logged in)
 * Display the shopping cart (a user must be logged in)
 * See product details on single product page and choose a size

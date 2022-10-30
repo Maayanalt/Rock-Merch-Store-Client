@@ -2,7 +2,7 @@ import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Form, Row } from "react-bootstrap";
 
-function CartCard({ title, img, selectedSize, sizes }) {
+function CartCard({ title, img, selectedSize, sizes, state, onChange, id }) {
   return (
     <Row>
       <Col md={3}>
@@ -10,17 +10,23 @@ function CartCard({ title, img, selectedSize, sizes }) {
       </Col>
       <Col md={6} className="d-flex flex-column justify-content-between">
         <h5 className="">{title}</h5>
-        <Form.Select
-          aria-label="Default select"
-          defaultValue={selectedSize}
-          style={{ width: "70px" }}
-        >
-          {sizes.map((size, idx) => (
-            <option value={size.size} key={idx}>
-              {size.size}
-            </option>
-          ))}
-        </Form.Select>
+        {state ? (
+          <Form.Select
+            onChange={onChange}
+            aria-label="Default select"
+            defaultValue={selectedSize}
+            style={{ width: "70px" }}
+          >
+            {sizes.map((size, idx) => (
+              <option value={size.size} key={idx}>
+                {size.size}
+              </option>
+            ))}
+          </Form.Select>
+        ) : (
+          <p>{selectedSize}</p>
+        )}
+
         <div className="mt-2">
           <FontAwesomeIcon
             icon={faHeart}

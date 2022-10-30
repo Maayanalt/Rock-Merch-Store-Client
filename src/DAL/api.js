@@ -76,3 +76,17 @@ export async function deleteFromWishlist(id) {
     credentials: "include",
   });
 }
+
+export async function createToCart(id, size) {
+  const response = await fetch("http://localhost:3200/api/cart", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ itemID: id, quantity: 1, size }),
+  });
+  if (response.status === 201) return true;
+  if (response.status === 403) alert("You must log in first");
+  return false;
+}

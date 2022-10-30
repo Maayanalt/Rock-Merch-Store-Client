@@ -90,3 +90,17 @@ export async function createToCart(id, size) {
   if (response.status === 403) alert("You must log in first");
   return false;
 }
+
+export async function updateCart(id, quantity, size) {
+  const response = await fetch("http://localhost:3200/api/cart/update", {
+    method: "PATCH",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ itemID: id, quantity, size }),
+  });
+  if (response.status === 201) return true;
+  if (response.status === 403) alert("You must log in first");
+  return false;
+}

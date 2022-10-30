@@ -20,6 +20,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
   async function addToCart(size = null) {
     const success = await createToCart(productID, size);
     if (success) {
+      setShowModal(false);
       setAlert({ message: "cart", show: true });
       setTimeout(() => setAlert({ message: "", show: false }), 2000);
     }

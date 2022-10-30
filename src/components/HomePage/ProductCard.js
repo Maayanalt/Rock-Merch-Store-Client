@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Card, Col, Carousel, Row, Button, Alert } from "react-bootstrap";
 import { IoHeartCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { postToWishlist } from "../../DAL/api";
+import CartModal from "../CartModal/CartModal";
+import { createToCart, postToWishlist } from "../../DAL/api";
 
 function ProductCard({ images, name, sizes, price, description, productID }) {
   const [alert, setAlert] = useState({ message: "", show: false });
+  const [showModal, setShowModal] = useState(false);
 
   async function addToWishlist() {
     const success = await postToWishlist(productID);
@@ -15,8 +17,22 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
     }
   }
 
+  async function addToCart(size = null) {
+    const success = await createToCart(productID, size);
+    if (success) {
+      setAlert({ message: "cart", show: true });
+      setTimeout(() => setAlert({ message: "", show: false }), 2000);
+    }
+  }
+
   return (
     <Col className="p-0">
+      <CartModal
+        show={showModal}
+        sizes={sizes}
+        addToCart={addToCart}
+        handleClose={() => setShowModal(false)}
+      ></CartModal>
       <Card className="p-1 h-100">
         <Alert
           variant="secondary"
@@ -64,6 +80,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
             <Button
               variant="outline-secondary"
               className="add-to-cart shadow-none px-2 py-1 col-lg-5"
+              onClick={() => setShowModal(true)}
             >
               Add to cart
             </Button>

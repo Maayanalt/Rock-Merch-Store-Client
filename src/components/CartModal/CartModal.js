@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import SizesSelection from "../Sizes/SizesSelection";
+import SizesSelection from "../SizesSelection/SizesSelection";
 
 function CartModal({ sizes, show, addToCart, handleClose }) {
   const [selectedSize, setSelectedSize] = useState("");

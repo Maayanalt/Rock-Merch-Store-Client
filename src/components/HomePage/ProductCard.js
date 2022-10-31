@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Card, Col, Carousel, Row, Button, Alert } from "react-bootstrap";
 import { IoHeartCircleSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartModal from "../CartModal/CartModal";
 import { createToCart, postToWishlist } from "../../DAL/api";
 
 function ProductCard({ images, name, sizes, price, description, productID }) {
   const [alert, setAlert] = useState({ message: "", show: false });
   const [showModal, setShowModal] = useState(false);
+  const [buyNow, setBuyNow] = useState(false);
+  const navigate = useNavigate();
 
   async function addToWishlist() {
     const success = await postToWishlist(productID);
@@ -19,6 +21,9 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
 
   async function addToCart(size = null) {
     const success = await createToCart(productID, size);
+    if (buyNow) {
+      navigate("/cart");
+    }
     if (success) {
       setShowModal(false);
       setAlert({ message: "cart", show: true });
@@ -85,7 +90,14 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
             >
               Add to cart
             </Button>
-            <Button variant="danger" className="shadow-none px-2 py-1 col-lg-5">
+            <Button
+              variant="danger"
+              className="shadow-none px-2 py-1 col-lg-5"
+              onClick={() => {
+                setBuyNow(true);
+                setShowModal(true);
+              }}
+            >
               Buy it now
             </Button>
           </Row>

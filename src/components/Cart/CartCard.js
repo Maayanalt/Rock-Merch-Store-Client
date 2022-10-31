@@ -1,8 +1,23 @@
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Form, Row } from "react-bootstrap";
+import { createToWishlist, postToWishlist } from "../../DAL/api";
 
-function CartCard({ title, img, selectedSize, sizes, state, onChange, id }) {
+function CartCard({
+  title,
+  img,
+  selectedSize,
+  sizes,
+  state,
+  onChange,
+  id,
+  trash,
+}) {
+  function addToWishlist(id) {
+    postToWishlist(id);
+    trash(id);
+  }
+
   return (
     <Row>
       <Col md={3}>
@@ -31,10 +46,12 @@ function CartCard({ title, img, selectedSize, sizes, state, onChange, id }) {
           <FontAwesomeIcon
             icon={faHeart}
             className="icon-button me-4"
+            onClick={(e) => addToWishlist(id)}
           ></FontAwesomeIcon>
           <FontAwesomeIcon
             icon={faTrash}
             className="icon-button ms-4"
+            onClick={(e) => trash(id)}
           ></FontAwesomeIcon>
         </div>
       </Col>

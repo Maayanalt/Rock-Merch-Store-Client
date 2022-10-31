@@ -2,7 +2,7 @@ import { Button, Card, Col, Row, Table } from "react-bootstrap";
 import CartCard from "./CartCard";
 import "./Cart.css";
 import { useEffect, useState } from "react";
-import { getCart, updateCart } from "../../DAL/api";
+import { deleteCart, deleteFromCart, getCart, updateCart } from "../../DAL/api";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
@@ -50,13 +50,25 @@ function Cart() {
       const indexOfKey = keys.indexOf(itemID);
       if (indexOfKey !== -1) {
         const data = JSON.parse(sessionStorage.getItem(itemID));
-        items[index].quantity = data.quantity;
-        items[index].size = data.size;
-        updateCart(items[index].item.id, data.quantity, data.size);
-        keys.splice(indexOfKey, 1);
+        if (data.quantity === 0) onDelete(items[index].item.id);
+        else {
+          items[index].quantity = data.quantity;
+          items[index].size = data.size;
+          updateCart(items[index].item.id, data.quantity, data.size);
+          keys.splice(indexOfKey, 1);
+        }
       }
       index++;
     }
+  }
+
+  function onDelete(itemID) {
+    const newItemsDetails = itemsDetails.filter(
+      (itemCart) => itemCart.item.id !== itemID
+    );
+    deleteFromCart(itemID);
+    if (newItemsDetails === []) deleteCart();
+    setItemsDetails(newItemsDetails);
   }
 
   function saveEditedDetails() {
@@ -122,6 +134,7 @@ function Cart() {
                           selectedSize={itemCart.size}
                           img={itemCart.item.images[0]}
                           sizes={itemCart.item.sizes}
+                          trash={onDelete}
                         ></CartCard>
                       </td>
                       <td>${itemCart.item.price}</td>

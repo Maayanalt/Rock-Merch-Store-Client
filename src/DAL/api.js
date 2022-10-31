@@ -104,3 +104,17 @@ export async function updateCart(id, quantity, size) {
   if (response.status === 403) alert("You must log in first");
   return false;
 }
+
+export async function deleteFromCart(id) {
+  fetch(`http://localhost:3200/api/cart/${id}`, {
+    method: "DELETE",
+    credentials: "include",
+  });
+}
+
+export async function deleteCart() {
+  fetch(`http://localhost:3200/api/cart`, {
+    method: "DELETE",
+    credentials: "include",
+  });
+}

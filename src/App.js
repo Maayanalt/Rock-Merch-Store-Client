@@ -10,6 +10,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -25,6 +26,18 @@ function App() {
 
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <header className="d-flex justify-content-between align-items-center px-4">
         <img src="/logo.png" id="logo" alt="logo" />
         <InputGroup id="search">

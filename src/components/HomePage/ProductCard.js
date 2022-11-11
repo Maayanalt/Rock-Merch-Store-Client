@@ -4,9 +4,9 @@ import { IoHeartCircleSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import CartModal from "../CartModal/CartModal";
 import { createToCart, postToWishlist } from "../../DAL/api";
+import { toast } from "react-toastify";
 
 function ProductCard({ images, name, sizes, price, description, productID }) {
-  const [alert, setAlert] = useState({ message: "", show: false });
   const [showModal, setShowModal] = useState(false);
   const [buyNow, setBuyNow] = useState(false);
   const navigate = useNavigate();
@@ -14,8 +14,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
   async function addToWishlist() {
     const success = await postToWishlist(productID);
     if (success) {
-      setAlert({ message: "wishlist", show: true });
-      setTimeout(() => setAlert({ message: "", show: false }), 1500);
+      toast.success("Added item to wishlist");
     }
   }
 
@@ -26,8 +25,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
     }
     if (success) {
       setShowModal(false);
-      setAlert({ message: "cart", show: true });
-      setTimeout(() => setAlert({ message: "", show: false }), 2000);
+      toast.success("Added item to cart");
     }
   }
 
@@ -40,13 +38,6 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
         handleClose={() => setShowModal(false)}
       ></CartModal>
       <Card className="p-1 h-100">
-        <Alert
-          variant="secondary"
-          show={alert.show}
-          className="disappearing-alert"
-        >
-          Added Item to {alert.message}
-        </Alert>
         <Carousel
           interval={null}
           variant="dark"

@@ -34,6 +34,23 @@ export async function postLogin(email, password) {
   return false;
 }
 
+export async function postLogout() {
+  const response = await fetch("http://localhost:3200/api/users/logout", {
+    method: "POST",
+    credentials: "include",
+  });
+  if (response.status === 200) return true;
+  return false;
+}
+
+export async function getUser() {
+  const res = await fetch("http://localhost:3200/api/users", {
+    credentials: "include",
+  });
+  const user = await res.json();
+  return user;
+}
+
 export async function getCart() {
   const res = await fetch("http://localhost:3200/api/cart", {
     credentials: "include",

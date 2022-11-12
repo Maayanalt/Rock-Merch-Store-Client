@@ -50,7 +50,7 @@ function NavbarComp() {
             <Nav.Link
               className="active d-inline-block d-sm-none mt-0"
               as={Link}
-              to="/login"
+              to="/my-account"
             >
               <FontAwesomeIcon
                 icon={faUser}
@@ -83,7 +83,7 @@ function NavbarComp() {
           </Nav>
         </Navbar.Collapse>
         <Nav className="d-none d-sm-flex">
-          <Nav.Link className="active mt-0" as={Link} to="/login">
+          <Nav.Link className="active mt-0" as={Link} to="/my-account">
             <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
           </Nav.Link>
           <Nav.Link className="active mt-0" as={Link} to="/cart">

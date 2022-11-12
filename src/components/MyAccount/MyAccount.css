@@ -1,0 +1,42 @@
+#items {
+  --bs-list-group-active-bg: #576f72;
+  --bs-list-group-active-border-color: #576f72;
+}
+
+.item:hover {
+  background-color: #7d9d9c;
+  color: white;
+}
+
+.spinner {
+  width: 5rem;
+  height: 5rem;
+  color: #576f72;
+}
+
+#my-account {
+  height: 70vh;
+}
+
+#log-out:hover,
+#log-out:focus {
+  border-color: #e4dccf;
+  background-color: #e4dccf;
+  color: #576f72;
+}
+
+#log-out {
+  background-color: #7d9d9c;
+  border-color: #7d9d9c;
+  color: white;
+}
+
+#view-details:focus,
+#view-details:hover {
+  background-color: #576f72;
+}
+
+#view-details {
+  background-color: #7d9d9c;
+  color: white;
+}

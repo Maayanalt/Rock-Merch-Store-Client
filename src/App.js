@@ -7,6 +7,8 @@ import Login from "./components/Login/Login";
 import Cart from "./components/Cart/Cart";
 import Wishlist from "./components/Wishlist/Wishlist";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import MyAccount from "./components/MyAccount/MyAccount";
+import Overview from "./components/MyAccount/Overview";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -66,6 +68,9 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/item/:id" element={<ProductDetails />} />
+          <Route path="/my-account/*" element={<MyAccount />}>
+            <Route index element={<Overview />}></Route>
+          </Route>
         </Routes>
       </main>
       <footer>

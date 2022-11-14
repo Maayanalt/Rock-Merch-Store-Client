@@ -30,7 +30,7 @@ function Cart() {
       (prev, curr) => prev + curr.quantity * curr.item.price,
       0
     );
-    setSubtotal(sum);
+    setSubtotal(sum.toFixed(2));
   }
 
   function calculatePrice(price, quantity) {

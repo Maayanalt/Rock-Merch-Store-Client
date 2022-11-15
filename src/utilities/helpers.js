@@ -10,3 +10,15 @@ export function organizeSizes(sizes) {
 
   return newSizes;
 }
+
+export function organizeItemsForOrder(items) {
+  const newItems = [];
+  items.forEach((item) => {
+    let { totalPrice, quantity, size } = item;
+    const img = item.item.images[0];
+    const name = item.item.name;
+    if (!size) size = "one size";
+    newItems.push({ name, img, totalPrice, quantity, size });
+  });
+  return newItems;
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { organizeItemsForOrder } from "../../utilities/helpers";
+import { organizeItemsForOrder } from "../../../utilities/helpers";
 
 function OrderCard({
   id,

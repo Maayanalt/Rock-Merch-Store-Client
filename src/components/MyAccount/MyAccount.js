@@ -38,9 +38,11 @@ function MyAccount() {
               <ListGroup.Item
                 action
                 variant="outline-secondary"
-                className="item"
+                className="item mt-0"
+                as={Link}
+                to={"/my-account/orders"}
               >
-                This one is a button
+                My orders
               </ListGroup.Item>
             </ListGroup>
           </Col>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Row, Spinner } from "react-bootstrap";
-import { getOrders } from "../../DAL/api";
+import { getOrders } from "../../../DAL/api";
 import OrderCard from "./OrderCard";
 
 function Orders() {

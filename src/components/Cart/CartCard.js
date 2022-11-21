@@ -1,7 +1,7 @@
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Form, Row } from "react-bootstrap";
-import { createToWishlist, postToWishlist } from "../../DAL/api";
+import { postToWishlist } from "../../DAL/api";
 
 function CartCard({
   title,
@@ -34,12 +34,12 @@ function CartCard({
           >
             {sizes.map((size, idx) => (
               <option value={size.size} key={idx}>
-                {size.size}
+                {size.size || "one size"}
               </option>
             ))}
           </Form.Select>
         ) : (
-          <p>{selectedSize}</p>
+          <p>{selectedSize || "one size"}</p>
         )}
 
         <div className="mt-2">

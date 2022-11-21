@@ -109,6 +109,7 @@ export async function createToCart(id, size) {
 }
 
 export async function updateCart(id, quantity, size) {
+  if(size === 'one size') size = null;
   const response = await fetch("http://localhost:3200/api/cart/update", {
     method: "PATCH",
     credentials: "include",

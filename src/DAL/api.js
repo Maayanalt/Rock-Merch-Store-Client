@@ -136,3 +136,14 @@ export async function deleteCart() {
     credentials: "include",
   });
 }
+
+export async function getOrders() {
+  const res = await fetch("http://localhost:3200/api/orders", {
+    credentials: "include",
+  });
+  if (res.status === 403) {
+    alert("You must log in first");
+  }
+  const orders = await res.json();
+  return orders;
+}

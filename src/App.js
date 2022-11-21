@@ -9,10 +9,13 @@ import Wishlist from "./components/Wishlist/Wishlist";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import MyAccount from "./components/MyAccount/MyAccount";
 import Overview from "./components/MyAccount/Overview";
+import Orders from "./components/MyAccount/Orders/Orders";
+import OrderDetails from "./components/MyAccount/Orders/OrderDetails";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -70,6 +73,8 @@ function App() {
           <Route path="/item/:id" element={<ProductDetails />} />
           <Route path="/my-account/*" element={<MyAccount />}>
             <Route index element={<Overview />}></Route>
+            <Route path="orders" element={<Orders />}></Route>
+            <Route path="order-details" element={<OrderDetails />}></Route>
           </Route>
         </Routes>
       </main>

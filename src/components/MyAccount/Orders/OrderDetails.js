@@ -43,7 +43,8 @@ function OrderDetails() {
           <Card.Text className="mb-0">{deliveryDetails.address}</Card.Text>
           <Card.Text className="mb-0">{deliveryDetails.city}</Card.Text>
           <Card.Text className="mb-0">{deliveryDetails.postalCode}</Card.Text>
-          <Card.Text>{deliveryDetails.country}</Card.Text>
+          <Card.Text className="mb-0">{deliveryDetails.country}</Card.Text>
+          <Card.Text>{deliveryDetails.phone}</Card.Text>
         </Card.Body>
       </Card>
     </div>

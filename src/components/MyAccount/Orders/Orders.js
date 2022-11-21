@@ -35,6 +35,7 @@ function Orders() {
                   city: order.city,
                   postalCode: order.postalCode,
                   country: order.country,
+                  phone: order.phone
                 }}
               ></OrderCard>
             ))}

@@ -109,7 +109,7 @@ export async function createToCart(id, size) {
 }
 
 export async function updateCart(id, quantity, size) {
-  if(size === 'one size') size = null;
+  if (size === "one size") size = null;
   const response = await fetch("http://localhost:3200/api/cart/update", {
     method: "PATCH",
     credentials: "include",
@@ -146,4 +146,29 @@ export async function getOrders() {
   }
   const orders = await res.json();
   return orders;
+}
+
+export async function createOrder(
+  { address, city, postalCode, country, phone },
+  totalCost
+) {
+  const response = await fetch("http://localhost:3200/api/orders", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      address,
+      city,
+      country,
+      postalCode,
+      phone,
+      totalCost,
+    }),
+  });
+  console.log(response);
+  if (response.status === 201) return true;
+  if (response.status === 403) alert("You must log in first");
+  return false;
 }

@@ -26,7 +26,10 @@ function Cart() {
   }, []);
 
   function calculateTotalQuantity() {
-    const sum = itemsDetails.reduce((prev, curr) => prev + curr.quantity, 0);
+    const sum = itemsDetails.reduce(
+      (prev, curr) => prev + Number(curr.quantity),
+      0
+    );
     return sum;
   }
 

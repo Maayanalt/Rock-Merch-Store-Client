@@ -1,0 +1,12 @@
+#items-summary {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 50vh;
+}
+
+#my-address {
+  border: #7d9d9c solid 0.2px;
+  border-radius: 5px;
+  box-shadow: 6px 3px 8px -3px rgba(145, 144, 144, 0.38);
+  width: 18vw;
+}

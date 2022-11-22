@@ -3,7 +3,7 @@ import CartCard from "./CartCard";
 import "./Cart.css";
 import { useEffect, useState } from "react";
 import { deleteCart, deleteFromCart, getCart, updateCart } from "../../DAL/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 
@@ -24,6 +24,11 @@ function Cart() {
 
     getData();
   }, []);
+
+  function calculateTotalQuantity() {
+    const sum = itemsDetails.reduce((prev, curr) => prev + curr.quantity, 0);
+    return sum;
+  }
 
   function calculateSubtotal() {
     const sum = itemsDetails.reduce(
@@ -109,7 +114,9 @@ function Cart() {
   return (
     <div>
       <Card className="m-5">
-        <Card.Header as="h5">Item Summary({itemsDetails.length})</Card.Header>
+        <Card.Header as="h5">
+          Item Summary({calculateTotalQuantity()})
+        </Card.Header>
         <Card.Body>
           {itemsDetails.length ? (
             <div>
@@ -194,7 +201,16 @@ function Cart() {
           <Card.Header as="h5">Order Summary</Card.Header>
           <Card.Body className="d-flex justify-content-between align-items-center">
             <Card.Text>Subtotal: ${subtotal}</Card.Text>
-            <Button variant="outline-secondary" id="checkout">
+            <Button
+              variant="outline-secondary"
+              id="checkout"
+              as={Link}
+              to="/checkout"
+              state={{
+                itemsDetails,
+                subtotal,
+              }}
+            >
               Checkout
             </Button>
           </Card.Body>

@@ -43,7 +43,7 @@ function Cart() {
 
   function calculatePrice(price, quantity) {
     const total = price * quantity;
-    return total;
+    return total.toFixed(2);
   }
 
   function changeEditMode() {

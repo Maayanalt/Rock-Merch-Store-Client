@@ -11,6 +11,7 @@ import MyAccount from "./components/MyAccount/MyAccount";
 import Overview from "./components/MyAccount/Overview";
 import Orders from "./components/MyAccount/Orders/Orders";
 import OrderDetails from "./components/MyAccount/Orders/OrderDetails";
+import Checkout from "./components/Checkout/Checkout";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -76,6 +77,7 @@ function App() {
             <Route path="orders" element={<Orders />}></Route>
             <Route path="order-details" element={<OrderDetails />}></Route>
           </Route>
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
       <footer>

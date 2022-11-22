@@ -1,14 +1,15 @@
 import { Row, Form, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import validate from "../../utilities/validations";
 import TextInput from "./TextInput";
+import SelectInput from "./SelectInput";
 
 function FormTemplate({ inputs, submit, postToServer }) {
   const [formData, setFormData] = useState(inputs);
-  const texts = [];
-  const select = [];
+  const [text, setText] = useState([]);
+  const [select, setSelect] = useState([]);
 
-  checkTypes();
+  useEffect(() => checkTypes(), []);
 
   function validation({ target: { name, value } }) {
     const targetObj = formData[name];
@@ -28,14 +29,19 @@ function FormTemplate({ inputs, submit, postToServer }) {
   }
 
   function checkTypes() {
+    const newText = [];
+    const newSelect = [];
     for (const input in formData) {
       if (
         formData[input].attr.type === "text" ||
-        formData[input].attr.type === "password"
+        formData[input].attr.type === "password" ||
+        formData[input].attr.type === "tel"
       )
-        texts.push(formData[input]);
-      else select.push(formData[input]);
+        newText.push(formData[input]);
+      else newSelect.push(formData[input]);
     }
+    setText(newText);
+    setSelect(newSelect);
   }
 
   function checkNoErrors() {
@@ -53,7 +59,12 @@ function FormTemplate({ inputs, submit, postToServer }) {
       onSubmit={handleSubmit}
       className="d-flex flex-column align-items-center"
     >
-      {texts.map((input, idx) => (
+      {select.map((input, idx) => (
+        <Row className="w-75 mb-2" key={idx}>
+          <SelectInput {...input} key={idx} func={validation}></SelectInput>
+        </Row>
+      ))}
+      {text.map((input, idx) => (
         <Row className="w-75 mb-2" key={idx}>
           <TextInput {...input} key={idx} func={validation}></TextInput>
         </Row>

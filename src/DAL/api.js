@@ -108,7 +108,7 @@ export async function createToCart(id, size) {
   return false;
 }
 
-export async function updateCart(id, quantity, size) {
+export async function updateCart(id, itemID, quantity, size) {
   if (size === "one size") size = null;
   const response = await fetch("http://localhost:3200/api/cart/update", {
     method: "PATCH",
@@ -116,8 +116,26 @@ export async function updateCart(id, quantity, size) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ itemID: id, quantity, size }),
+    body: JSON.stringify({ cartDetailID: id, itemID, quantity, size }),
   });
+  if (response.status === 201) return true;
+  if (response.status === 403) alert("You must log in first");
+  return false;
+}
+
+export async function updateCartDuplicates(id, itemID, quantity, size) {
+  if (size === "one size") size = null;
+  const response = await fetch(
+    "http://localhost:3200/api/cart/update/duplicates",
+    {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cartDetailID: id, itemID, quantity, size }),
+    }
+  );
   if (response.status === 201) return true;
   if (response.status === 403) alert("You must log in first");
   return false;

@@ -2,7 +2,13 @@ import { Button, Card, Col, Row, Table } from "react-bootstrap";
 import CartCard from "./CartCard";
 import "./Cart.css";
 import { useEffect, useState } from "react";
-import { deleteCart, deleteFromCart, getCart, updateCart } from "../../DAL/api";
+import {
+  deleteCart,
+  deleteFromCart,
+  getCart,
+  updateCart,
+  updateCartDuplicates,
+} from "../../DAL/api";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
@@ -51,47 +57,89 @@ function Cart() {
     else setEditMode(true);
   }
 
-  function updateDetails(items, keys) {
-    let index = 0;
-    while (keys.length) {
-      const itemID = `${items[index].item.id}`;
-      const indexOfKey = keys.indexOf(itemID);
-      if (indexOfKey !== -1) {
-        const data = JSON.parse(sessionStorage.getItem(itemID));
-        if (data.quantity === 0) onDelete(items[index].item.id);
-        else {
-          items[index].quantity = data.quantity;
-          items[index].size = data.size;
-          updateCart(items[index].item.id, data.quantity, data.size);
-          keys.splice(indexOfKey, 1);
+  async function itemAlreadyInCart(idToBeRemoved, items, size, itemID) {
+    const sameItem = items.filter((item) => {
+      return item.size === size && item.item.id === itemID;
+    });
+    if (sameItem.length > 1) {
+      let exisitingItem;
+      sameItem[1].id === idToBeRemoved
+        ? (exisitingItem = sameItem[0])
+        : (exisitingItem = sameItem[1]);
+      exisitingItem.quantity = sameItem[1].quantity + sameItem[0].quantity;
+      updateCartDuplicates(
+        idToBeRemoved,
+        exisitingItem.item.id,
+        exisitingItem.quantity,
+        size
+      );
+      items.forEach((item, idx) => {
+        if (item.id === idToBeRemoved) {
+          items.splice(idx, 1);
+          return;
         }
+      });
+      return true;
+    }
+    return false;
+  }
+
+  async function updateDetails(keys) {
+    let index = 0;
+    let count = 0;
+    const newItems = [...itemsDetails];
+    while (keys.length !== count) {
+      const cartDetailID = `${newItems[index].id}`;
+      const indexOfKey = keys.indexOf(cartDetailID);
+      if (indexOfKey !== -1) {
+        const data = JSON.parse(sessionStorage.getItem(cartDetailID));
+        if (data.quantity === 0) onDelete(newItems[index].id);
+        else {
+          newItems[index].quantity = Number(data.quantity);
+          newItems[index].size = data.size;
+          const isDuplicated = await itemAlreadyInCart(
+            +cartDetailID,
+            newItems,
+            data.size,
+            newItems[index].item.id
+          );
+          if (!isDuplicated) {
+            await updateCart(
+              cartDetailID,
+              newItems[index].item.id,
+              data.quantity,
+              data.size
+            );
+          }
+        }
+        count++;
       }
       index++;
     }
+    return newItems;
   }
 
-  function onDelete(itemID) {
+  function onDelete(cartDetailID) {
     const newItemsDetails = itemsDetails.filter(
-      (itemCart) => itemCart.item.id !== itemID
+      (itemCart) => itemCart.id !== cartDetailID
     );
-    deleteFromCart(itemID);
+    deleteFromCart(cartDetailID);
     if (newItemsDetails === []) deleteCart();
     setItemsDetails(newItemsDetails);
   }
 
-  function saveEditedDetails() {
+  async function saveEditedDetails() {
     const keys = Object.keys(sessionStorage);
-    const newItemsDetails = [...itemsDetails];
-    updateDetails(newItemsDetails, keys);
+    const newItemsDetails = await updateDetails(keys);
     sessionStorage.clear();
     setItemsDetails(newItemsDetails);
     setEditMode(false);
   }
 
   function changeQuantity(e, itemCart) {
-    const data = JSON.parse(sessionStorage.getItem(`${itemCart.item.id}`));
+    const data = JSON.parse(sessionStorage.getItem(`${itemCart.id}`));
     sessionStorage.setItem(
-      `${itemCart.item.id}`,
+      `${itemCart.id}`,
       JSON.stringify({
         quantity: e.target.value,
         size: data?.size || itemCart.size,
@@ -100,9 +148,9 @@ function Cart() {
   }
 
   function changeSize(e, itemCart) {
-    const data = JSON.parse(sessionStorage.getItem(`${itemCart.item.id}`));
+    const data = JSON.parse(sessionStorage.getItem(`${itemCart.id}`));
     sessionStorage.setItem(
-      `${itemCart.item.id}`,
+      `${itemCart.id}`,
       JSON.stringify({
         quantity: data?.quantity || itemCart.quantity,
         size: e.target.value,
@@ -138,6 +186,7 @@ function Cart() {
                       <td>
                         <CartCard
                           id={itemCart.item.id}
+                          cartDetailID={itemCart.id}
                           onChange={(e) => changeSize(e, itemCart)}
                           state={editMode}
                           title={itemCart.item.name}

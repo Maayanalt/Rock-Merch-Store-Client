@@ -12,10 +12,11 @@ function CartCard({
   onChange,
   id,
   trash,
+  cartDetailID,
 }) {
   function addToWishlist(id) {
     postToWishlist(id);
-    trash(id);
+    trash(cartDetailID);
   }
 
   return (
@@ -51,7 +52,7 @@ function CartCard({
           <FontAwesomeIcon
             icon={faTrash}
             className="icon-button ms-4"
-            onClick={(e) => trash(id)}
+            onClick={(e) => trash(cartDetailID)}
           ></FontAwesomeIcon>
         </div>
       </Col>

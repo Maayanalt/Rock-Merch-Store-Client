@@ -12,6 +12,7 @@ import Overview from "./components/MyAccount/Overview";
 import Orders from "./components/MyAccount/Orders/Orders";
 import OrderDetails from "./components/MyAccount/Orders/OrderDetails";
 import Checkout from "./components/Checkout/Checkout";
+import AccountDetails from "./components/MyAccount/Details/AccountDetails";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -35,7 +36,7 @@ function App() {
       <ToastContainer
         position="top-center"
         autoClose={2000}
-        hideProgressBar
+        hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
@@ -76,6 +77,7 @@ function App() {
             <Route index element={<Overview />}></Route>
             <Route path="orders" element={<Orders />}></Route>
             <Route path="order-details" element={<OrderDetails />}></Route>
+            <Route path="account-details" element={<AccountDetails />}></Route>
           </Route>
           <Route path="/checkout" element={<Checkout />} />
         </Routes>

@@ -18,6 +18,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EditPage from "./components/MyAccount/Details/EditPage";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -78,6 +79,7 @@ function App() {
             <Route path="orders" element={<Orders />}></Route>
             <Route path="order-details" element={<OrderDetails />}></Route>
             <Route path="account-details" element={<AccountDetails />}></Route>
+            <Route path="edit-page" element={<EditPage />}></Route>
           </Route>
           <Route path="/checkout" element={<Checkout />} />
         </Routes>

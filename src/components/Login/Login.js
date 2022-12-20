@@ -4,6 +4,7 @@ import { Alert, Container } from "react-bootstrap";
 import { postLogin } from "../../DAL/api";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function Login() {
       formData.password.value
     );
     if (valid) navigate("/");
-    else alert("wrong password or email, try again !");
+    else toast.warn("wrong password or email, try again !");
   }
 
   return (
@@ -24,8 +25,8 @@ function Login() {
         <hr />
         <FormTemplate
           inputs={{
-            email: inputTypes.email,
-            password: inputTypes.password,
+            email: { ...inputTypes.email },
+            password: { ...inputTypes.password },
           }}
           submit="sign in"
           postToServer={validateUserInServer}

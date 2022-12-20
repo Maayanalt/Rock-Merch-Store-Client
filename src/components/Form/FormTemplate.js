@@ -12,11 +12,15 @@ function FormTemplate({ inputs, submit, postToServer }) {
   useEffect(() => checkTypes(), []);
 
   function validation({ target: { name, value } }) {
-    const targetObj = formData[name];
     const form = { ...formData };
+    const targetObj = form[name];
 
-    form[name].errors = validate(name, value, targetObj.validation);
-    form[name].value = value;
+    if (name === "passwordConfirm") {
+      form.passwordConfirm.validation.value = form.newPassword.value;
+    }
+
+    targetObj.errors = validate(targetObj.label, value, targetObj.validation);
+    targetObj.value = value;
     setFormData(form);
   }
 

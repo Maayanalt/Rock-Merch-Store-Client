@@ -18,6 +18,10 @@
   height: 60vh;
 }
 
+#account-details {
+  height: 65vh;
+}
+
 #log-out:hover,
 #log-out:focus {
   border-color: #e4dccf;
@@ -32,11 +36,18 @@
 }
 
 #view-details:focus,
-#view-details:hover {
+#view-details:hover,
+.edit-btn:focus,
+.edit-btn:hover {
   background-color: #576f72;
 }
 
-#view-details {
+#view-details,
+.edit-btn {
   background-color: #7d9d9c;
   color: white;
+}
+
+.edit-form {
+  width: 45vw;
 }

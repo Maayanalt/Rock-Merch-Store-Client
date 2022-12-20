@@ -44,6 +44,15 @@ function MyAccount() {
               >
                 My orders
               </ListGroup.Item>
+              <ListGroup.Item
+                action
+                variant="outline-secondary"
+                className="item mt-0"
+                as={Link}
+                to={"/my-account/account-details"}
+              >
+                Account details
+              </ListGroup.Item>
             </ListGroup>
           </Col>
           <Col

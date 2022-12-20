@@ -6,6 +6,7 @@ import {
   faLocationDot,
   faMapLocationDot,
   faPhone,
+  faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 import countries from "./countries.json";
 
@@ -38,6 +39,36 @@ const inputTypes = {
       type: "password",
       placeholder: "Enter Password",
       name: "password",
+    },
+  },
+  newPassword: {
+    value: "",
+    validation: {
+      required: true,
+      minLength: 8,
+    },
+    errors: [],
+    label: "New Password",
+    icon: faKey,
+    attr: {
+      type: "password",
+      placeholder: "New Password",
+      name: "newPassword",
+    },
+  },
+  passwordConfirm: {
+    value: "",
+    validation: {
+      required: true,
+      value: "",
+    },
+    errors: [],
+    label: "Confirm Password",
+    icon: faKey,
+    attr: {
+      type: "password",
+      placeholder: "Confirm Password",
+      name: "passwordConfirm",
     },
   },
   address: {
@@ -112,6 +143,36 @@ const inputTypes = {
       type: "tel",
       placeholder: "Phone Number",
       name: "phone",
+    },
+  },
+  firstName: {
+    value: "",
+    validation: {
+      required: true,
+      minLength: 2,
+    },
+    errors: [],
+    label: "First Name",
+    icon: faPerson,
+    attr: {
+      type: "text",
+      placeholder: "First Name",
+      name: "firstName",
+    },
+  },
+  lastName: {
+    value: "",
+    validation: {
+      required: true,
+      minLength: 2,
+    },
+    errors: [],
+    label: "Last Name",
+    icon: faPerson,
+    attr: {
+      type: "text",
+      placeholder: "Last Name",
+      name: "lastName",
     },
   },
 };

@@ -12,6 +12,10 @@ function validate(name, value, validation) {
     errors.push(`${name} is invalid`);
   }
 
+  if (validation.value && validation.value !== value) {
+    errors.push(`${name} is not the same`);
+  }
+
   return errors;
 }
 

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export async function getCategories() {
   let categories = await fetch("http://localhost:3200/api/items/categories");
   categories = await categories.json();
@@ -51,12 +53,29 @@ export async function getUser() {
   return user;
 }
 
+export async function updateUserDetails(inputs) {
+  const response = await fetch("http://localhost:3200/api/users/update", {
+    method: "PATCH",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(inputs),
+  });
+  if (!response.ok) {
+    const error = await response.json();
+    toast.error(error.message);
+    return false;
+  }
+  return true;
+}
+
 export async function getCart() {
   const res = await fetch("http://localhost:3200/api/cart", {
     credentials: "include",
   });
   if (res.status === 403) {
-    alert("You must log in first");
+    toast.warn("You must log in first");
   }
   const cart = await res.json();
   return cart;
@@ -67,7 +86,7 @@ export async function getWishlist() {
     credentials: "include",
   });
   if (res.status === 403) {
-    alert("You must log in first");
+    toast.warn("You must log in first");
   }
   const wishlist = await res.json();
   return wishlist;
@@ -83,7 +102,7 @@ export async function postToWishlist(id) {
     body: JSON.stringify({ value: id }),
   });
   if (response.status === 201) return true;
-  if (response.status === 403) alert("You must log in first");
+  if (response.status === 403) toast.warn("You must log in first");
   return false;
 }
 
@@ -104,7 +123,7 @@ export async function createToCart(id, size) {
     body: JSON.stringify({ itemID: id, quantity: 1, size }),
   });
   if (response.status === 201) return true;
-  if (response.status === 403) alert("You must log in first");
+  if (response.status === 403) toast.warn("You must log in first");
   return false;
 }
 
@@ -119,7 +138,7 @@ export async function updateCart(id, itemID, quantity, size) {
     body: JSON.stringify({ cartDetailID: id, itemID, quantity, size }),
   });
   if (response.status === 201) return true;
-  if (response.status === 403) alert("You must log in first");
+  if (response.status === 403) toast.warn("You must log in first");
   return false;
 }
 
@@ -137,7 +156,7 @@ export async function updateCartDuplicates(id, itemID, quantity, size) {
     }
   );
   if (response.status === 201) return true;
-  if (response.status === 403) alert("You must log in first");
+  if (response.status === 403) toast.warn("You must log in first");
   return false;
 }
 
@@ -160,7 +179,7 @@ export async function getOrders() {
     credentials: "include",
   });
   if (res.status === 403) {
-    alert("You must log in first");
+    toast.warn("You must log in first");
   }
   const orders = await res.json();
   return orders;
@@ -187,6 +206,6 @@ export async function createOrder(
   });
   console.log(response);
   if (response.status === 201) return true;
-  if (response.status === 403) alert("You must log in first");
+  if (response.status === 403) toast.warn("You must log in first");
   return false;
 }

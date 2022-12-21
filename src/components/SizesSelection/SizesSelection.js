@@ -6,7 +6,6 @@ function SizesSelection({ itemSizes, selectedSize, setSelectedSize }) {
   const [sizes, setSizes] = useState([]);
 
   useEffect(() => {
-    console.log(itemSizes);
     const sizes = organizeSizes(itemSizes);
     setSizes(sizes);
   }, []);

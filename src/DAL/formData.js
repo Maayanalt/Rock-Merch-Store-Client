@@ -99,6 +99,7 @@ const inputTypes = {
     },
     defaultOption: "Select Country",
     options: countries.countryList,
+    selectedOption: null,
   },
   city: {
     value: "",
@@ -127,7 +128,7 @@ const inputTypes = {
     attr: {
       type: "text",
       placeholder: "Postal Code",
-      name: "code",
+      name: "postalCode",
     },
   },
   phone: {

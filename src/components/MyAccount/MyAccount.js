@@ -53,6 +53,15 @@ function MyAccount() {
               >
                 Account details
               </ListGroup.Item>
+              <ListGroup.Item
+                action
+                variant="outline-secondary"
+                className="item mt-0"
+                as={Link}
+                to={"/my-account/my-address"}
+              >
+                My address
+              </ListGroup.Item>
             </ListGroup>
           </Col>
           <Col

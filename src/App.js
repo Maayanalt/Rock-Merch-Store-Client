@@ -1,7 +1,7 @@
-import NavbarComp from "./components/Navbar/NavbarComp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InputGroup, Button, Form } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
+import NavbarComp from "./components/Navbar/NavbarComp";
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
 import Cart from "./components/Cart/Cart";
@@ -13,12 +13,13 @@ import Orders from "./components/MyAccount/Orders/Orders";
 import OrderDetails from "./components/MyAccount/Orders/OrderDetails";
 import Checkout from "./components/Checkout/Checkout";
 import AccountDetails from "./components/MyAccount/Details/AccountDetails";
+import MyAddress from "./components/MyAccount/MyAddress";
+import EditPage from "./components/MyAccount/Details/EditPage";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import EditPage from "./components/MyAccount/Details/EditPage";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -80,6 +81,7 @@ function App() {
             <Route path="order-details" element={<OrderDetails />}></Route>
             <Route path="account-details" element={<AccountDetails />}></Route>
             <Route path="edit-page" element={<EditPage />}></Route>
+            <Route path="my-address" element={<MyAddress />}></Route>
           </Route>
           <Route path="/checkout" element={<Checkout />} />
         </Routes>

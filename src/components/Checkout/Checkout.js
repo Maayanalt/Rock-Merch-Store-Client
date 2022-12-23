@@ -25,7 +25,7 @@ function Checkout() {
         address: { value: address },
         city: { value: city },
         country: { value: country },
-        code: { value: postalCode },
+        postalCode: { value: postalCode },
         phone: { value: phone },
       } = formData;
       createOrder({ address, city, postalCode, country, phone }, subtotal);
@@ -99,11 +99,11 @@ function Checkout() {
             {showNewAddress && (
               <FormTemplate
                 inputs={{
-                  address: inputTypes.address,
-                  country: inputTypes.country,
-                  city: inputTypes.city,
-                  code: inputTypes.postalCode,
-                  phone: inputTypes.phone,
+                  address: { ...inputTypes.address },
+                  country: { ...inputTypes.country },
+                  city: { ...inputTypes.city },
+                  postalCode: { ...inputTypes.postalCode },
+                  phone: { ...inputTypes.phone },
                 }}
                 submit="Submit My Order"
                 postToServer={submitOrder}

@@ -10,6 +10,7 @@ function SelectInput({
   errors,
   options,
   defaultOption,
+  selectedOption,
 }) {
   return (
     <Form.Group>
@@ -18,7 +19,7 @@ function SelectInput({
         <InputGroup.Text id="inputGroupPrepend">
           <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
         </InputGroup.Text>
-        <Form.Select required className="shadow-none" onBlur={func} {...attr}>
+        <Form.Select required className="shadow-none" onBlur={func} {...attr} defaultValue={selectedOption}>
           <option value="">{defaultOption}</option>
           {options.map((option, idx) => (
             <option value={option} key={idx}>

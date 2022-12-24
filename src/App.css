@@ -3,17 +3,15 @@ body {
 }
 
 footer {
-  position: relative;
   color: #576f72;
-  bottom: 0;
 }
-
-/* #logo {
-  max-width: 15%;
-} */
 
 #navbar {
   background-color: #576f72;
+}
+
+#container {
+  min-height: 100vh;
 }
 
 #button-search:hover,

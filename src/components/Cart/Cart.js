@@ -119,12 +119,14 @@ function Cart() {
     return newItems;
   }
 
-  function onDelete(cartDetailID) {
+  async function onDelete(cartDetailID) {
     const newItemsDetails = itemsDetails.filter(
       (itemCart) => itemCart.id !== cartDetailID
     );
-    deleteFromCart(cartDetailID);
-    if (newItemsDetails === []) deleteCart();
+    await deleteFromCart(cartDetailID);
+    if (newItemsDetails.length === 0) {
+      await deleteCart();
+    }
     setItemsDetails(newItemsDetails);
   }
 

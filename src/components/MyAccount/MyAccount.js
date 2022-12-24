@@ -21,7 +21,7 @@ function MyAccount() {
   }, []);
 
   return (
-    <div id="my-account">
+    <div>
       {user ? (
         <Row className="m-0 px-2 justify-content-between">
           <Col sm={12} md={3} lg={2}>

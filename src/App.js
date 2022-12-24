@@ -34,7 +34,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="d-flex flex-column" id="container">
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -86,7 +86,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
-      <footer>
+      <footer className="mt-auto">
         <p>©2022 Built by Maayan Altarac</p>
       </footer>
     </div>

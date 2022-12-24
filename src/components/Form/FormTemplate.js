@@ -16,7 +16,11 @@ function FormTemplate({ inputs, submit, postToServer }) {
     const targetObj = form[name];
 
     if (name === "passwordConfirm") {
-      form.passwordConfirm.validation.value = form.newPassword.value;
+      form.newPassword
+        ? (form.passwordConfirm.validation.MatchValue.value =
+            form.newPassword.value)
+        : (form.passwordConfirm.validation.MatchValue.value =
+            form.password.value);
     }
 
     targetObj.errors = validate(targetObj.label, value, targetObj.validation);

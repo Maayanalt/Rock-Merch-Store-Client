@@ -13,7 +13,7 @@ function Overview() {
   }
 
   return (
-    <div id="overview">
+    <div>
       <h2>
         Hello, {user.firstName} {user.lastName} <TbHandRock></TbHandRock>
       </h2>

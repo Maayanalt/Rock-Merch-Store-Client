@@ -14,14 +14,6 @@
   color: #576f72;
 }
 
-#overview {
-  height: 60vh;
-}
-
-#account-details {
-  height: 65vh;
-}
-
 #log-out:hover,
 #log-out:focus {
   border-color: #e4dccf;

@@ -15,6 +15,7 @@ import Checkout from "./components/Checkout/Checkout";
 import AccountDetails from "./components/MyAccount/Details/AccountDetails";
 import MyAddress from "./components/MyAccount/MyAddress";
 import EditPage from "./components/MyAccount/Details/EditPage";
+import Register from "./components/Register/Register";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -72,6 +73,7 @@ function App() {
             element={<HomePage products={products} categories={categories} />}
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/item/:id" element={<ProductDetails />} />

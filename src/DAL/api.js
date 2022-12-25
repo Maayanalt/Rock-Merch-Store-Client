@@ -53,6 +53,24 @@ export async function getUser() {
   return user;
 }
 
+export async function createUser(firstName, lastName, email, password) {
+  const response = await fetch("http://localhost:3200/api/users/register", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ firstName, lastName, email, password }),
+  });
+  if (response.status === 201) {
+    toast.success("Created successfully! now login");
+    return true;
+  } else {
+    const error = await response.json();
+    toast.error(error.message);
+  }
+}
+
 export async function updateUserDetails(inputs) {
   const response = await fetch("http://localhost:3200/api/users/update", {
     method: "PATCH",

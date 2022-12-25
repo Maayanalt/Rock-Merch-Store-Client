@@ -166,7 +166,7 @@ function Cart() {
 
   return (
     <div>
-      <Card className="m-5">
+      <Card className="m-5 mt-1">
         <Card.Header as="h5">
           Item Summary({calculateTotalQuantity()})
         </Card.Header>

@@ -3,6 +3,7 @@ import { updateUserDetails } from "../../DAL/api";
 import FormTemplate from "../Form/FormTemplate";
 import inputTypes from "../../DAL/formData";
 import { Card } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 function MyAddress() {
   const user = useOutletContext();
@@ -25,8 +26,10 @@ function MyAddress() {
       user[property] = formData[property].value;
       changes[property] = formData[property].value;
     }
-    if (await updateUserDetails(changes))
-      navigate("/my-account/account-details");
+    if (await updateUserDetails(changes)) {
+      toast.success("Changed address successfully");
+      navigate("/my-account");
+    }
   }
 
   return (

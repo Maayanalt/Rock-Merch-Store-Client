@@ -1,10 +1,10 @@
 import inputTypes from "../../DAL/formData";
 import FormTemplate from "../Form/FormTemplate";
-import { Alert, Container } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import { postLogin } from "../../DAL/api";
-import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "./Login.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -28,9 +28,22 @@ function Login() {
             email: { ...inputTypes.email },
             password: { ...inputTypes.password },
           }}
-          submit="sign in"
+          submit="Sign In"
           postToServer={validateUserInServer}
         ></FormTemplate>
+        <hr />
+        <Row className="justify-content-between">
+          <Col lg={4}>
+            <Link to="/" className="link-in-login">
+              Forgot Password?
+            </Link>
+          </Col>
+          <Col lg={3}>
+            <Link to="/register" className="link-in-login">
+              New Member
+            </Link>
+          </Col>
+        </Row>
       </Alert>
     </Container>
   );

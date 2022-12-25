@@ -30,7 +30,7 @@ function Wishlist() {
   }, []);
 
   return (
-    <Card className="m-5">
+    <Card className="m-5 mt-1">
       <Card.Header as="h5">Wishlist</Card.Header>
       <Card.Body className="p-4 row">
         {items.length ? (

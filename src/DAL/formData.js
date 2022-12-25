@@ -30,7 +30,7 @@ const inputTypes = {
     value: "",
     validation: {
       required: true,
-      pattern: "",
+      minLength: 8,
     },
     errors: [],
     label: "Password",

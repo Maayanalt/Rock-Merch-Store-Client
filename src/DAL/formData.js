@@ -1,5 +1,4 @@
 import {
-  faUser,
   faKey,
   faBuilding,
   faEarthAmericas,
@@ -7,6 +6,7 @@ import {
   faMapLocationDot,
   faPhone,
   faPerson,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import countries from "./countries.json";
 
@@ -19,7 +19,7 @@ const inputTypes = {
     },
     errors: [],
     label: "Email",
-    icon: faUser,
+    icon: faEnvelope,
     attr: {
       type: "text",
       placeholder: "Enter Email",
@@ -60,7 +60,10 @@ const inputTypes = {
     value: "",
     validation: {
       required: true,
-      value: "",
+      matchValue: {
+        value: "",
+        property: "password",
+      },
     },
     errors: [],
     label: "Confirm Password",

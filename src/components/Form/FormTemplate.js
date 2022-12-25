@@ -17,9 +17,9 @@ function FormTemplate({ inputs, submit, postToServer }) {
 
     if (name === "passwordConfirm") {
       form.newPassword
-        ? (form.passwordConfirm.validation.MatchValue.value =
+        ? (form.passwordConfirm.validation.matchValue.value =
             form.newPassword.value)
-        : (form.passwordConfirm.validation.MatchValue.value =
+        : (form.passwordConfirm.validation.matchValue.value =
             form.password.value);
     }
 

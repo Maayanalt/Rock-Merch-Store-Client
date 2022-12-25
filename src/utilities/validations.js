@@ -12,8 +12,8 @@ function validate(name, value, validation) {
     errors.push(`${name} is invalid`);
   }
 
-  if (validation.value && validation.value !== value) {
-    errors.push(`${name} is not the same`);
+  if (validation.MatchValue && validation.MatchValue.value !== value) {
+    errors.push(`${validation.MatchValue.property}'s do not match`);
   }
 
   return errors;

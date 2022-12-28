@@ -33,7 +33,7 @@ function NavbarComp() {
               ></FontAwesomeIcon>
               Home
             </Nav.Link>
-            <Nav.Link className="active mt-0" href="#">
+            <Nav.Link className="active mt-0" as={Link} to="/about">
               <FontAwesomeIcon
                 icon={faCircleInfo}
                 className="pe-2 pe-sm-2"

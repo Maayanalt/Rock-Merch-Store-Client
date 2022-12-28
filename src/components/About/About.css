@@ -1,0 +1,25 @@
+@media (max-width: 576px) {
+    #about {
+        margin: 0 1rem;
+    }
+  }
+  
+  @media (min-width: 576px) {
+    #about {
+        width: 75% !important;
+        margin-bottom: 1.5rem!important;
+        margin: auto!important;
+      }
+  }
+  
+  @media (min-width: 768px) {
+    #about {
+        width: 75% !important;
+      }
+  }
+
+  @media (min-width: 1200px) {
+    #about {
+        width: 50% !important;
+      }
+  }

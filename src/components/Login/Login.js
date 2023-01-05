@@ -34,7 +34,7 @@ function Login() {
         <hr />
         <Row className="justify-content-between">
           <Col lg={4}>
-            <Link to="/" className="link-in-login">
+            <Link to="/forgot-password" className="link-in-login">
               Forgot Password?
             </Link>
           </Col>

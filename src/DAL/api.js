@@ -45,6 +45,17 @@ export async function postLogout() {
   return false;
 }
 
+export async function postForgotPass(email) {
+  fetch("http://localhost:3200/api/reset-password/email", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+}
+
 export async function getUser() {
   const res = await fetch("http://localhost:3200/api/users", {
     credentials: "include",

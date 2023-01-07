@@ -56,6 +56,25 @@ export async function postForgotPass(email) {
   });
 }
 
+export async function postResetPass(password, token) {
+  const data = { token, password };
+  const response = await fetch("http://localhost:3200/api/reset-password", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) {
+    const error = await response.json();
+    toast.error(error.message);
+    return false;
+  } else {
+    return true;
+  }
+}
+
 export async function getUser() {
   const res = await fetch("http://localhost:3200/api/users", {
     credentials: "include",

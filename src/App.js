@@ -17,6 +17,7 @@ import MyAddress from "./components/MyAccount/MyAddress";
 import EditPage from "./components/MyAccount/Details/EditPage";
 import Register from "./components/Register/Register";
 import ForgotPassword from "./components/ForgotPassword/forgotPassword";
+import ResetPassword from "./components/ForgotPassword/resetPassword";
 import About from "./components/About/About";
 import { getCategories, getProducts } from "./DAL/api";
 import "./App.css";
@@ -77,6 +78,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />

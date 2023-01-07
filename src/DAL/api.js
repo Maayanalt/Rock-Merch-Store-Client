@@ -209,7 +209,7 @@ export async function updateCartDuplicates(id, itemID, quantity, size) {
 }
 
 export async function deleteFromCart(id) {
-  fetch(`http://localhost:3200/api/cart/${id}`, {
+  return fetch(`http://localhost:3200/api/cart/${id}`, {
     method: "DELETE",
     credentials: "include",
   });

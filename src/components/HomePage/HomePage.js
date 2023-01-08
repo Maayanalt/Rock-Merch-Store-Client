@@ -1,11 +1,35 @@
+import { useEffect, useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
-import "./HomePage.css";
+import { useParams } from "react-router";
 import ProductCard from "./ProductCard";
 import SideNavbar from "./SideNavbar";
+import {
+  getProducts,
+  getProductsByCategory,
+  getProductsByParentCategory,
+} from "../../DAL/api";
+import "./HomePage.css";
 
-function HomePage({ products, categories }) {
+function HomePage({ categories }) {
+  const [products, setProducts] = useState([]);
+  const { type, id } = useParams();
+
+  async function getData() {
+    if (type === "cat") {
+      setProducts(await getProductsByCategory(id));
+    } else if (type === "parentCat") {
+      setProducts(await getProductsByParentCategory(id));
+    } else {
+      setProducts(await getProducts());
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, [id]);
+
   return (
-    <Row className="m-0 px-2 justify-content-between gap-4">
+    <Row className="m-0 px-2 justify-content-between gap-4 align-items-start">
       <Col sm={12} md={3} lg={2}>
         <SideNavbar categories={categories}></SideNavbar>
       </Col>
@@ -15,7 +39,7 @@ function HomePage({ products, categories }) {
         sm={11}
         className="mx-md-3 mx-sm-4 mx-lg-4 mx-xl-4 mb-5 d-grid gap-3 p-0"
       >
-        <Row className="justify-content-between">
+        <Row className="justify-content-between align-items-start">
           <Col xs={2}>
             <h3>Clothes</h3>
           </Col>
@@ -45,6 +69,7 @@ function HomePage({ products, categories }) {
               description={product.description}
             ></ProductCard>
           ))}
+          {products.length === 0 && <p className="fs-5">No items.</p>}
         </Row>
       </Col>
     </Row>

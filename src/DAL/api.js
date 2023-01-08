@@ -22,6 +22,20 @@ export async function getOneProduct(id) {
   return product;
 }
 
+export async function getProductsByCategory(id) {
+  let product = await fetch(`http://localhost:3200/api/items/category/${id}`);
+  product = await product.json();
+  return product;
+}
+
+export async function getProductsByParentCategory(id) {
+  let product = await fetch(
+    `http://localhost:3200/api/items/category/parent/${id}`
+  );
+  product = await product.json();
+  return product;
+}
+
 export async function postLogin(email, password) {
   const data = { email, password };
   const response = await fetch("http://localhost:3200/api/users/login", {

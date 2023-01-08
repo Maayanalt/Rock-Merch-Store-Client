@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { InputGroup, Button, Form } from "react-bootstrap";
+import { InputGroup, Button, Form, Row, Spinner } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import NavbarComp from "./components/Navbar/NavbarComp";
 import HomePage from "./components/HomePage/HomePage";
@@ -19,11 +19,11 @@ import Register from "./components/Register/Register";
 import ForgotPassword from "./components/ForgotPassword/forgotPassword";
 import ResetPassword from "./components/ForgotPassword/resetPassword";
 import About from "./components/About/About";
-import { getCategories, getProducts } from "./DAL/api";
-import "./App.css";
+import { getCategories } from "./DAL/api";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -36,66 +36,77 @@ function App() {
   }, []);
 
   return (
-    <div className="d-flex flex-column" id="container">
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <header className="d-flex justify-content-between align-items-center px-4">
-        <img src="/logo.png" id="logo" alt="logo" />
-        <InputGroup id="search">
-          <Form.Control
-            placeholder="Search"
-            aria-label="Search"
-            aria-describedby="button-search"
+    <div>
+      {categories ? (
+        <div className="d-flex flex-column" id="container">
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
           />
-          <Button
-            variant="outline-secondary"
-            className="shadow-none"
-            id="button-search"
-          >
-            Search
-          </Button>
-        </InputGroup>
-      </header>
-      <NavbarComp></NavbarComp>
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage categories={categories} />} />
-          <Route
-            path="/:type/:id"
-            element={<HomePage categories={categories} />}
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/item/:id" element={<ProductDetails />} />
-          <Route path="/my-account/*" element={<MyAccount />}>
-            <Route index element={<Overview />}></Route>
-            <Route path="orders" element={<Orders />}></Route>
-            <Route path="order-details" element={<OrderDetails />}></Route>
-            <Route path="account-details" element={<AccountDetails />}></Route>
-            <Route path="edit-page" element={<EditPage />}></Route>
-            <Route path="my-address" element={<MyAddress />}></Route>
-          </Route>
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </main>
-      <footer className="mt-auto">
-        <p>©2022 Built by Maayan Altarac</p>
-      </footer>
+          <header className="d-flex justify-content-between align-items-center px-4">
+            <img src="/logo.png" id="logo" alt="logo" />
+            <InputGroup id="search">
+              <Form.Control
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="button-search"
+              />
+              <Button
+                variant="outline-secondary"
+                className="shadow-none"
+                id="button-search"
+              >
+                Search
+              </Button>
+            </InputGroup>
+          </header>
+          <NavbarComp></NavbarComp>
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage categories={categories} />} />
+              <Route
+                path="/:type/:id"
+                element={<HomePage categories={categories} />}
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/item/:id" element={<ProductDetails />} />
+              <Route path="/my-account/*" element={<MyAccount />}>
+                <Route index element={<Overview />}></Route>
+                <Route path="orders" element={<Orders />}></Route>
+                <Route path="order-details" element={<OrderDetails />}></Route>
+                <Route
+                  path="account-details"
+                  element={<AccountDetails />}
+                ></Route>
+                <Route path="edit-page" element={<EditPage />}></Route>
+                <Route path="my-address" element={<MyAddress />}></Route>
+              </Route>
+              <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+          </main>
+          <footer className="mt-auto">
+            <p>©2022 Built by Maayan Altarac</p>
+          </footer>
+        </div>
+      ) : (
+        <Row className="m-5 p-5 justify-content-center">
+          <Spinner animation="border" className="spinner" />
+        </Row>
+      )}
     </div>
   );
 }

@@ -27,11 +27,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
   useEffect(() => {
     async function getData() {
       setCategories(await getCategories());
-      setProducts(await getProducts());
     }
 
     getData();
@@ -71,9 +69,10 @@ function App() {
       <NavbarComp></NavbarComp>
       <main>
         <Routes>
+          <Route path="/" element={<HomePage categories={categories} />} />
           <Route
-            path="/"
-            element={<HomePage products={products} categories={categories} />}
+            path="/:type/:id"
+            element={<HomePage categories={categories} />}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

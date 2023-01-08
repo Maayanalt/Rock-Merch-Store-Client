@@ -15,5 +15,6 @@
 }
 
 .link-in-login {
+  text-decoration: none;
   color: #41464b;
 }

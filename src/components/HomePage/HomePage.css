@@ -1,13 +1,17 @@
-a {
+.category-btn {
   text-decoration: none;
   color: #000000;
+  background-color: white;
+  border: none;
+  text-align: left;
+  padding: 0;
 }
 
-a:not(:first-child) {
+.category-btn:not(:first-child) {
   margin-top: 5px;
 }
 
-a:hover {
+.category-btn:hover, a:hover {
   color: #576f72;
 }
 
@@ -33,6 +37,11 @@ a:hover {
 .add-to-cart {
   background-color: #7d9d9c;
   color: white;
+}
+
+.product-title {
+  text-decoration: none;
+  color: #000000;
 }
 
 #categories {

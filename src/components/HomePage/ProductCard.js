@@ -69,8 +69,9 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
               description,
               price,
             }}
+            className="product-title"
           >
-            <Card.Title className="card-title">{name}</Card.Title>
+            <Card.Title>{name}</Card.Title>
           </Link>
           <Card.Text className="card-text">${price}</Card.Text>
           <Row className="d-flex gap-1 justify-content-center">

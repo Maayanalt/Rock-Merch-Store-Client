@@ -29,6 +29,14 @@
   background-image: var(--bs-accordion-btn-icon);
 }
 
+.pagination {
+  --bs-pagination-hover-color:#576f72;
+  --bs-pagination-focus-color:#576f72;
+  --bs-pagination-color:#576f72;
+  --bs-pagination-active-bg:#576f72;
+  --bs-pagination-active-border-color:#576f72;
+}
+
 .add-to-cart:focus,
 .add-to-cart:hover {
   background-color: #576f72;

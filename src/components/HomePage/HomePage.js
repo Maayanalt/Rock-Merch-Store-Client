@@ -3,6 +3,7 @@ import { Row, Col, Form } from "react-bootstrap";
 import { useParams } from "react-router";
 import ProductCard from "./ProductCard";
 import SideNavbar from "./SideNavbar";
+import PaginationNav from "./PaginationNav";
 import {
   getProducts,
   getProductsByCategory,
@@ -104,6 +105,13 @@ function HomePage({ categories }) {
           ))}
           {products.length === 0 && <p className="fs-5">No items.</p>}
         </Row>
+
+        <PaginationNav
+          getData={getData}
+          totalItems={totalItems}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        ></PaginationNav>
       </Col>
     </Row>
   );

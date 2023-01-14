@@ -9,11 +9,15 @@ import {
   getProductsByParentCategory,
 } from "../../DAL/api";
 import "./HomePage.css";
+import { useSearchParams } from "react-router-dom";
 
 function HomePage({ categories }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalItems, setTotalItems] = useState([]);
   const [categoryName, setCategoryName] = useState("Clothes");
   const [products, setProducts] = useState([]);
   const { type, id } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   async function getData() {
     if (type === "cat") {

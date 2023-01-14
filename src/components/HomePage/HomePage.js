@@ -14,7 +14,7 @@ import { useSearchParams } from "react-router-dom";
 function HomePage({ categories }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState([]);
-  const [categoryName, setCategoryName] = useState("Clothes");
+  const [categoryName, setCategoryName] = useState("All Items");
   const [products, setProducts] = useState([]);
   const { type, id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,12 +38,16 @@ function HomePage({ categories }) {
 
   async function getData() {
     if (type === "cat") {
-      setProducts(await getProductsByCategory(id));
+      setItemsForPage(currentPage, getProductsByCategory);
     } else if (type === "parentCat") {
-      setProducts(await getProductsByParentCategory(id));
+      setItemsForPage(currentPage, getProductsByParentCategory);
     } else {
-      setProducts(await getProducts());
+      setCategoryName("All Items");
+      setItemsForPage(currentPage, getProducts);
     }
+    const updatedSearchParams = new URLSearchParams(searchParams.toString());
+    updatedSearchParams.set("page", `${currentPage}`);
+    setSearchParams(updatedSearchParams.toString());
   }
 
   useEffect(() => {

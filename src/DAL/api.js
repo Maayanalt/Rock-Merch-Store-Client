@@ -10,10 +10,12 @@ export async function getCategories() {
   return newCategories;
 }
 
-export async function getProducts() {
-  let products = await fetch("http://localhost:3200/api/items");
-  products = await products.json();
-  return products;
+export async function getProducts(page, limit = 6) {
+  let respone = await fetch(
+    `http://localhost:3200/api/items?page=${page}&limit=${limit}`
+  );
+  const [products, total] = await respone.json();
+  return [products, total];
 }
 
 export async function getOneProduct(id) {
@@ -22,18 +24,20 @@ export async function getOneProduct(id) {
   return product;
 }
 
-export async function getProductsByCategory(id) {
-  let product = await fetch(`http://localhost:3200/api/items/category/${id}`);
-  product = await product.json();
-  return product;
+export async function getProductsByCategory(id, page, limit = 6) {
+  let respone = await fetch(
+    `http://localhost:3200/api/items/category/${id}?page=${page}&limit=${limit}`
+  );
+  const [products, total] = await respone.json();
+  return [products, total];
 }
 
-export async function getProductsByParentCategory(id) {
-  let product = await fetch(
-    `http://localhost:3200/api/items/category/parent/${id}`
+export async function getProductsByParentCategory(id, page, limit = 6) {
+  let respone = await fetch(
+    `http://localhost:3200/api/items/category/parent/${id}?page=${page}&limit=${limit}`
   );
-  product = await product.json();
-  return product;
+  const [products, total] = await respone.json();
+  return [products, total];
 }
 
 export async function postLogin(email, password) {

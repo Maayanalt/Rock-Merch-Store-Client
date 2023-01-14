@@ -19,6 +19,23 @@ function HomePage({ categories }) {
   const { type, id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  async function setItemsForPage(page, apiFunc) {
+    let items, total;
+    if (id) {
+      [items, total] = await apiFunc(id, page);
+    } else {
+      [items, total] = await apiFunc(page);
+    }
+    setProducts(items);
+    if (total !== totalItems) {
+      const totalArray = [];
+      for (let i = 1; i <= Math.ceil(total / 6); i++) {
+        totalArray.push(i);
+      }
+      setTotalItems(totalArray);
+    }
+  }
+
   async function getData() {
     if (type === "cat") {
       setProducts(await getProductsByCategory(id));
@@ -30,8 +47,12 @@ function HomePage({ categories }) {
   }
 
   useEffect(() => {
+    setCurrentPage(1);
+  }, [type]);
+
+  useEffect(() => {
     getData();
-  }, [id]);
+  }, [id, currentPage]);
 
   return (
     <Row className="m-0 px-2 justify-content-between gap-4 align-items-start">

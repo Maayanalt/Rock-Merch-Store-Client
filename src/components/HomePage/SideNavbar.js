@@ -1,7 +1,7 @@
 import { Accordion } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
-function SideNavbar({ categories }) {
+function SideNavbar({ categories, setCategoryName }) {
   const navigate = useNavigate();
 
   async function showCategory(categoryID, parent = false) {
@@ -25,7 +25,10 @@ function SideNavbar({ categories }) {
               <button
                 className="category-btn"
                 key={idx}
-                onClick={(e) => showCategory(child.id)}
+                onClick={(e) => {
+                  showCategory(child.id);
+                  setCategoryName(category.name);
+                }}
               >
                 {child.name}
               </button>

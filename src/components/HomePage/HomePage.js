@@ -11,6 +11,7 @@ import {
 import "./HomePage.css";
 
 function HomePage({ categories }) {
+  const [categoryName, setCategoryName] = useState("Clothes");
   const [products, setProducts] = useState([]);
   const { type, id } = useParams();
 
@@ -31,7 +32,10 @@ function HomePage({ categories }) {
   return (
     <Row className="m-0 px-2 justify-content-between gap-4 align-items-start">
       <Col sm={12} md={3} lg={2}>
-        <SideNavbar categories={categories}></SideNavbar>
+        <SideNavbar
+          categories={categories}
+          setCategoryName={setCategoryName}
+        ></SideNavbar>
       </Col>
       <Col
         lg={9}
@@ -41,7 +45,7 @@ function HomePage({ categories }) {
       >
         <Row className="justify-content-between align-items-start">
           <Col xs={2}>
-            <h3>Clothes</h3>
+            <h3>{categoryName}</h3>
           </Col>
           <Col
             xs={9}

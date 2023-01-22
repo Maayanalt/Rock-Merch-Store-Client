@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 function ProductCard({ images, name, sizes, price, description, productID }) {
   const [showModal, setShowModal] = useState(false);
-  const [buyNow, setBuyNow] = useState(false);
   const navigate = useNavigate();
 
   async function addToWishlist() {
@@ -20,9 +19,6 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
 
   async function addToCart(size = null) {
     const success = await createToCart(productID, size);
-    if (buyNow) {
-      navigate("/cart");
-    }
     if (success) {
       setShowModal(false);
       toast.success("Added item to cart");
@@ -77,20 +73,10 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
           <Row className="d-flex gap-1 justify-content-center">
             <Button
               variant="outline-secondary"
-              className="add-to-cart shadow-none px-2 py-1 col-lg-5"
+              className="add-to-cart shadow-none px-2 py-1 col-lg-10"
               onClick={() => setShowModal(true)}
             >
               Add to cart
-            </Button>
-            <Button
-              variant="danger"
-              className="shadow-none px-2 py-1 col-lg-5"
-              onClick={() => {
-                setBuyNow(true);
-                setShowModal(true);
-              }}
-            >
-              Buy it now
             </Button>
           </Row>
         </Card.Body>

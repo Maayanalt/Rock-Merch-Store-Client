@@ -31,3 +31,14 @@ Users can do the following:
 - [x] Checkout & cart summary (a user must be logged in)
 - [x] Buy products (a user must be logged in)
 - [x] View user's orders (a user must be logged in)
+
+## Demo
+> Home page and product details page
+
+![home-page-gif](https://user-images.githubusercontent.com/75583578/213934608-011321cd-62de-402b-95cb-6daea5d0fc32.gif)
+> Cart and checkout page
+
+![cart](https://user-images.githubusercontent.com/75583578/214094607-0eaac19a-bbb8-4b38-97c4-7cba7bf6ad8f.gif)
+> My account page
+
+![my-account](https://user-images.githubusercontent.com/75583578/215320787-e51b7468-78bc-4158-99e3-4c37b73c83c5.gif)

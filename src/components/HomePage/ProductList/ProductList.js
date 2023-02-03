@@ -49,14 +49,12 @@ function ProductList({ categoryName, setCategoryName }) {
   }, [currentPage, type]);
 
   useEffect(() => {
-    console.log("use effect 1");
     if (currentPage !== 1) {
       setCurrentPage(1);
     }
   }, [type]);
 
   useEffect(() => {
-    console.log("use effect 2");
     getData();
   }, [id, currentPage]);
 

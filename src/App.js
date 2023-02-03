@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import ModalContextProvider from "./components/ContextProviders/ModalContextProvider";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -82,7 +83,14 @@ function App() {
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/about" element={<About />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/wishlist" element={<Wishlist />} />
+              <Route
+                path="/wishlist"
+                element={
+                  <ModalContextProvider
+                    component={Wishlist}
+                  ></ModalContextProvider>
+                }
+              />
               <Route path="/item/:id" element={<ProductDetails />} />
               <Route path="/my-account/*" element={<MyAccount />}>
                 <Route index element={<Overview />}></Route>

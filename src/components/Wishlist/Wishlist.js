@@ -3,7 +3,7 @@ import WishlistCard from "./WishlistCard";
 import "./Wishlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { deleteFromWishlist, getWishlist } from "../../DAL/api";
 import { useNavigate } from "react-router-dom";
 
@@ -37,6 +37,7 @@ function Wishlist() {
           items.map((item, idx) => (
             <Col md={6} key={idx}>
               <WishlistCard
+                sizes={item.item.sizes}
                 title={item.item.name}
                 img={item.item.images[0]}
                 productID={item.item.id}
@@ -54,4 +55,4 @@ function Wishlist() {
   );
 }
 
-export default Wishlist;
+export default React.memo(Wishlist);

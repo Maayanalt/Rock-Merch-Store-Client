@@ -9,15 +9,23 @@ import {
 } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import "./ProductDetails.css";
-import { getOneProduct } from "../../DAL/api";
+import { getOneProduct, postToWishlist } from "../../DAL/api";
 import { organizeSizes } from "../../utilities/helpers";
 import { useLocation, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function ProductDetails() {
   // sizes = [{value: 'XS', disabled: true/false}...]
   const [itemDetails, setItemDetails] = useState(null);
   const { id } = useParams();
   const { state } = useLocation();
+
+  async function addToWishlist() {
+    const success = await postToWishlist(id);
+    if (success) {
+      toast.success("Added item to wishlist");
+    }
+  }
 
   useEffect(() => {
     async function getData() {
@@ -96,6 +104,7 @@ function ProductDetails() {
                   variant="outline-info"
                   className="shadow-none"
                   id="add-to-wishlist"
+                  onClick={addToWishlist}
                 >
                   Add to wishlist
                 </Button>

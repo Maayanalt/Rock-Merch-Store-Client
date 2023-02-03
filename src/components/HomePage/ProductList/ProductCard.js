@@ -3,7 +3,7 @@ import { Card, Col, Carousel, Row, Button } from "react-bootstrap";
 import { IoHeartCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { createToWishlist } from "../../../DAL/api";
+import { postToWishlist } from "../../../DAL/api";
 import { CartModalDispatchContext } from "../../ContextProviders/ModalContextProvider";
 
 function ProductCard({ images, name, sizes, price, description, productID }) {
@@ -11,7 +11,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
   const setModalProps = cartModalDispatchContext;
 
   async function addToWishlist() {
-    const success = await createToWishlist(productID);
+    const success = await postToWishlist(productID);
     if (success) {
       toast.success("Added item to wishlist");
     }

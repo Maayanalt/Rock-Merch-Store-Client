@@ -16,37 +16,40 @@ function ProductList({ categoryName, setCategoryName }) {
   const { type, id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  async function setItemsForPage(page, apiFunc) {
-    let items, total;
-    if (id) {
-      [items, total] = await apiFunc(id, page);
-    } else {
-      [items, total] = await apiFunc(page);
-    }
-    setProducts(items);
-    const pages = Math.ceil(total / 6);
-    if (pages !== totalPages.length) {
-      const totalArray = [];
-      for (let i = 1; i <= pages; i++) {
-        totalArray.push(i);
+  const setItemsForPage = useCallback(
+    async (page, apiFunc) => {
+      let items, total;
+      if (id) {
+        [items, total] = await apiFunc(id, page);
+      } else {
+        [items, total] = await apiFunc(page);
       }
-      setTotalPages(totalArray);
-    }
-  }
+      setProducts(items);
+      const pages = Math.ceil(total / 6);
+      if (pages !== totalPages.length) {
+        const totalArray = [];
+        for (let i = 1; i <= pages; i++) {
+          totalArray.push(i);
+        }
+        setTotalPages(totalArray);
+      }
+    },
+    [id, totalPages]
+  );
 
-  const getData = useCallback(() => {
+  const getData = useCallback(async () => {
     if (type === "cat") {
-      setItemsForPage(currentPage, getProductsByCategory);
+      await setItemsForPage(currentPage, getProductsByCategory);
     } else if (type === "parentCat") {
-      setItemsForPage(currentPage, getProductsByParentCategory);
+      await setItemsForPage(currentPage, getProductsByParentCategory);
     } else {
       setCategoryName("All Items");
-      setItemsForPage(currentPage, getProducts);
+      await setItemsForPage(currentPage, getProducts);
     }
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
     updatedSearchParams.set("page", `${currentPage}`);
     setSearchParams(updatedSearchParams.toString());
-  }, [currentPage, type]);
+  }, [currentPage, type, setItemsForPage]);
 
   useEffect(() => {
     if (currentPage !== 1) {

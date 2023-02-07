@@ -55,7 +55,7 @@ function ProductList({ categoryName, setCategoryName }) {
     if (currentPage !== 1) {
       setCurrentPage(1);
     }
-  }, [type]);
+  }, [type, id]);
 
   useEffect(() => {
     getData();

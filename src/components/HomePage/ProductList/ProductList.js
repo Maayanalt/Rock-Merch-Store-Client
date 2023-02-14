@@ -4,28 +4,26 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   getProducts,
   getProductsByCategory,
+  getProductsByCategorySorted,
   getProductsByParentCategory,
+  getProductsByParentCategorySorted,
+  getProductsSorted,
 } from "../../../DAL/api";
+import { validateSort } from "../../../utilities/validations";
 import PaginationNav from "./PaginationNav";
 import ProductCard from "./ProductCard";
 import SortSelect from "./SortSelect";
 
 function ProductList({ categoryName, setCategoryName }) {
   const [products, setProducts] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState([]);
   const { type, id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const setItemsForPage = useCallback(
-    async (page, apiFunc) => {
-      let items, total;
-      if (id) {
-        [items, total] = await apiFunc(id, page);
-      } else {
-        [items, total] = await apiFunc(page);
-      }
+    async (apiFunc) => {
+      const [items, total] = await apiFunc();
       setProducts(items);
       const pages = Math.ceil(total / 6);
       if (pages !== totalPages.length) {
@@ -36,22 +34,33 @@ function ProductList({ categoryName, setCategoryName }) {
         setTotalPages(totalArray);
       }
     },
-    [id, totalPages]
+    [totalPages]
   );
 
-  const getData = useCallback(async () => {
-    if (type === "cat") {
-      await setItemsForPage(currentPage, getProductsByCategory);
-    } else if (type === "parentCat") {
-      await setItemsForPage(currentPage, getProductsByParentCategory);
-    } else {
-      setCategoryName("All Items");
-      await setItemsForPage(currentPage, getProducts);
-    }
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
-    updatedSearchParams.set("page", `${currentPage}`);
-    setSearchParams(updatedSearchParams.toString());
-  }, [currentPage, type, setItemsForPage]);
+  const getData = useCallback(
+    async (currentPage, sort = false) => {
+      if (type === "cat") {
+        if (sort && validateSort(sort))
+          setItemsForPage(() =>
+            getProductsByCategorySorted(id, currentPage, sort)
+          );
+        else setItemsForPage(() => getProductsByCategory(id, currentPage));
+      } else if (type === "parentCat") {
+        if (sort && validateSort(sort))
+          setItemsForPage(() =>
+            getProductsByParentCategorySorted(id, currentPage, sort)
+          );
+        else
+          setItemsForPage(() => getProductsByParentCategory(id, currentPage));
+      } else {
+        setCategoryName("All Items");
+        if (sort && validateSort(sort))
+          setItemsForPage(() => getProductsSorted(currentPage, sort));
+        else setItemsForPage(() => getProducts(currentPage));
+      }
+    },
+    [type, setItemsForPage, setCategoryName, id]
+  );
 
   const updateQueryValues = useCallback(
     (currentPage = false, order = false) => {
@@ -64,14 +73,11 @@ function ProductList({ categoryName, setCategoryName }) {
   );
 
   useEffect(() => {
-    if (currentPage !== 1) {
-      setCurrentPage(1);
-    }
-  }, [type, id]);
-
-  useEffect(() => {
-    getData();
-  }, [id, currentPage]);
+    const sort = searchParams.get("sort");
+    const page = searchParams.get("page");
+    if (page === null) setSearchParams({ page: 1 });
+    else getData(+page, sort);
+  }, [searchParams, getData]);
 
   return (
     <Col
@@ -110,8 +116,8 @@ function ProductList({ categoryName, setCategoryName }) {
           <PaginationNav
             getData={getData}
             totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
+            searchParams={searchParams}
+            updateQueryValues={updateQueryValues}
           ></PaginationNav>
         </div>
       ) : (

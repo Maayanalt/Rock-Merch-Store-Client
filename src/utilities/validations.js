@@ -1,4 +1,4 @@
-function validate(name, value, validation) {
+export function validateForm(name, value, validation) {
   const errors = [];
   if (validation.required && !value) {
     errors.push(`${name} is required`);
@@ -19,4 +19,7 @@ function validate(name, value, validation) {
   return errors;
 }
 
-export default validate;
+export function validateSort(sort) {
+  if (sort === "asc" || sort === "desc") return true;
+  return false;
+}

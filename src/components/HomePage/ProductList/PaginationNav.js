@@ -1,39 +1,37 @@
 import React, { useState } from "react";
 import { Pagination } from "react-bootstrap";
 
-function PaginationNav({ getData, totalPages, currentPage, setCurrentPage }) {
+function PaginationNav({ totalPages, searchParams, updateQueryValues }) {
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(3);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+  const page = Number(searchParams.get("page"));
 
   function nextPage() {
-    if (currentPage + 1 > maxPageNumberLimit) {
+    if (page + 1 > maxPageNumberLimit) {
       setmaxPageNumberLimit(maxPageNumberLimit + 3);
       setminPageNumberLimit(minPageNumberLimit + 3);
     }
-    setCurrentPage(currentPage + 1);
+    updateQueryValues(page + 1);
   }
 
   function prevPage() {
-    if (currentPage - 1 <= minPageNumberLimit) {
+    if (page - 1 <= minPageNumberLimit) {
       setmaxPageNumberLimit(maxPageNumberLimit - 3);
       setminPageNumberLimit(minPageNumberLimit - 3);
     }
-    setCurrentPage(currentPage - 1);
+    updateQueryValues(page - 1);
   }
 
   return (
     <Pagination className="mt-3 d-flex justify-content-center">
-      <Pagination.Prev onClick={prevPage} disabled={currentPage === 1} />
+      <Pagination.Prev onClick={prevPage} disabled={page === 1} />
       {totalPages.map((number) => {
         if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
           return (
             <Pagination.Item
               key={number}
-              active={currentPage === number}
-              onClick={() => {
-                setCurrentPage(number);
-                getData();
-              }}
+              active={page === number}
+              onClick={() => updateQueryValues(number)}
             >
               {number}
             </Pagination.Item>
@@ -42,7 +40,7 @@ function PaginationNav({ getData, totalPages, currentPage, setCurrentPage }) {
       })}
       <Pagination.Next
         onClick={nextPage}
-        disabled={currentPage === totalPages.length}
+        disabled={page === totalPages.length}
       />
     </Pagination>
   );
@@ -51,7 +49,7 @@ function PaginationNav({ getData, totalPages, currentPage, setCurrentPage }) {
 export default React.memo(PaginationNav, (prev, next) => {
   if (
     prev.totalPages === next.totalPages &&
-    prev.currentPage === next.currentPage
+    prev.searchParams === next.searchParams
   )
     return true;
   else return false;

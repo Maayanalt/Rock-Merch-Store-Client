@@ -18,6 +18,15 @@ export async function getProducts(page, limit = 6) {
   return [products, total];
 }
 
+export async function getProductsSorted(page, order, limit = 6) {
+  order = order.toUpperCase();
+  let respone = await fetch(
+    `http://localhost:3200/api/items/sorted?page=${page}&limit=${limit}&order=${order}`
+  );
+  const [products, total] = await respone.json();
+  return [products, total];
+}
+
 export async function getOneProduct(id) {
   let product = await fetch(`http://localhost:3200/api/items/${id}`);
   product = await product.json();
@@ -35,6 +44,29 @@ export async function getProductsByCategory(id, page, limit = 6) {
 export async function getProductsByParentCategory(id, page, limit = 6) {
   let respone = await fetch(
     `http://localhost:3200/api/items/category/parent/${id}?page=${page}&limit=${limit}`
+  );
+  const [products, total] = await respone.json();
+  return [products, total];
+}
+
+export async function getProductsByCategorySorted(id, page, order, limit = 6) {
+  order = order.toUpperCase();
+  let respone = await fetch(
+    `http://localhost:3200/api/items/sorted/category/${id}?page=${page}&limit=${limit}&order=${order}`
+  );
+  const [products, total] = await respone.json();
+  return [products, total];
+}
+
+export async function getProductsByParentCategorySorted(
+  id,
+  page,
+  order,
+  limit = 6
+) {
+  order = order.toUpperCase();
+  let respone = await fetch(
+    `http://localhost:3200/api/items/sorted/category/parent/${id}?page=${page}&limit=${limit}&order=${order}`
   );
   const [products, total] = await respone.json();
   return [products, total];

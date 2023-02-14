@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Col, Form, Row, Spinner } from "react-bootstrap";
-import { useParams, useSearchParams } from "react-router-dom";
+import { Col, Row, Spinner } from "react-bootstrap";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   getProducts,
   getProductsByCategory,
@@ -8,6 +8,7 @@ import {
 } from "../../../DAL/api";
 import PaginationNav from "./PaginationNav";
 import ProductCard from "./ProductCard";
+import SortSelect from "./SortSelect";
 
 function ProductList({ categoryName, setCategoryName }) {
   const [products, setProducts] = useState(null);
@@ -15,6 +16,7 @@ function ProductList({ categoryName, setCategoryName }) {
   const [totalPages, setTotalPages] = useState([]);
   const { type, id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const setItemsForPage = useCallback(
     async (page, apiFunc) => {
@@ -51,6 +53,16 @@ function ProductList({ categoryName, setCategoryName }) {
     setSearchParams(updatedSearchParams.toString());
   }, [currentPage, type, setItemsForPage]);
 
+  const updateQueryValues = useCallback(
+    (currentPage = false, order = false) => {
+      if (currentPage) searchParams.set("page", currentPage);
+      if (order) searchParams.set("sort", order);
+      setSearchParams(searchParams);
+      if (type) navigate(`/${type}/${id}?${searchParams.toString()}`);
+    },
+    [searchParams, type, id]
+  );
+
   useEffect(() => {
     if (currentPage !== 1) {
       setCurrentPage(1);
@@ -74,20 +86,11 @@ function ProductList({ categoryName, setCategoryName }) {
             <Col xs={3} lg={4}>
               <h3>{categoryName}</h3>
             </Col>
-            <Col
-              xs={9}
-              lg={6}
-              className="d-flex align-items-center justify-content-end gap-2 mb-4"
-            >
-              <span>Sort by:</span>
-              <div style={{ width: "11rem" }}>
-                <Form.Select aria-label="Default select" defaultValue={"Best"}>
-                  <option value="Best">Best seller</option>
-                  <option value="low-high">Price Low to High</option>
-                  <option value="high-low">Price High to Low</option>
-                </Form.Select>
-              </div>
-            </Col>
+            <SortSelect
+              updateQueryValues={updateQueryValues}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            ></SortSelect>
           </Row>
           <Row className="row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 gap-md-0 gap-lg-0 gap-xl-0">
             {products.map((product, idx) => (

@@ -42,3 +42,6 @@ Users can do the following:
 > My account page
 
 ![my-account](https://user-images.githubusercontent.com/75583578/215320787-e51b7468-78bc-4158-99e3-4c37b73c83c5.gif)
+> Wishlist page
+
+![wishlist](https://user-images.githubusercontent.com/75583578/218730915-e8a3b241-aaa2-4893-a761-c19edd94ad7d.gif)

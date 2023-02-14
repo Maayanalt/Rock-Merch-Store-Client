@@ -5,8 +5,9 @@ function SideNavbar({ categories, setCategoryName }) {
   const navigate = useNavigate();
 
   async function showCategory(categoryID, parent = false) {
-    if (parent) navigate(`/parentCat/${categoryID}`);
-    else navigate(`/cat/${categoryID}`);
+    if (parent)
+      navigate({ pathname: `/parentCat/${categoryID}`, search: "?page=1" });
+    else navigate({ pathname: `/cat/${categoryID}`, search: "?page=1" });
   }
 
   return (

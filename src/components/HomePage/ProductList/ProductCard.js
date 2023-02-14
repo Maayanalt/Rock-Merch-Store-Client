@@ -73,4 +73,6 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
   );
 }
 
-export default ProductCard;
+export default React.memo(ProductCard, (prev, next) => {
+  return prev.productID === next.productID;
+});

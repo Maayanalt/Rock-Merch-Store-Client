@@ -1,6 +1,6 @@
 import { Row, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import validate from "../../utilities/validations";
+import { validateForm } from "../../utilities/validations";
 import TextInput from "./TextInput";
 import SelectInput from "./SelectInput";
 
@@ -23,7 +23,11 @@ function FormTemplate({ inputs, submit, postToServer }) {
             form.password.value);
     }
 
-    targetObj.errors = validate(targetObj.label, value, targetObj.validation);
+    targetObj.errors = validateForm(
+      targetObj.label,
+      value,
+      targetObj.validation
+    );
     targetObj.value = value;
     setFormData(form);
   }

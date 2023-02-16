@@ -33,6 +33,28 @@ export async function getOneProduct(id) {
   return product;
 }
 
+export async function getProductsBySearch(search, page, limit = 8) {
+  let respone = await fetch(
+    `http://localhost:3200/api/items/search?q=${search}&page=${page}&limit=${limit}`
+  );
+  const [products, total] = await respone.json();
+  return [products, total];
+}
+
+export async function getProductsBySearchSorted(
+  search,
+  order,
+  page,
+  limit = 8
+) {
+  order = order.toUpperCase();
+  let respone = await fetch(
+    `http://localhost:3200/api/items/search/sorted?q=${search}&page=${page}&limit=${limit}&order=${order}`
+  );
+  const [products, total] = await respone.json();
+  return [products, total];
+}
+
 export async function getProductsByCategory(id, page, limit = 6) {
   let respone = await fetch(
     `http://localhost:3200/api/items/category/${id}?page=${page}&limit=${limit}`

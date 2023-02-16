@@ -10,7 +10,7 @@ import {
   getProductsSorted,
 } from "../../../DAL/api";
 import { validateSort } from "../../../utilities/validations";
-import PaginationNav from "./PaginationNav";
+import PaginationNav from "./../../Pagination/PaginationNav";
 import ProductCard from "./ProductCard";
 import SortSelect from "./SortSelect";
 

@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InputGroup, Button, Form, Row, Spinner } from "react-bootstrap";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import NavbarComp from "./components/Navbar/NavbarComp";
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
@@ -19,15 +19,19 @@ import Register from "./components/Register/Register";
 import ForgotPassword from "./components/ForgotPassword/forgotPassword";
 import ResetPassword from "./components/ForgotPassword/resetPassword";
 import About from "./components/About/About";
+import Search from "./components/Search/Search";
+import ModalContextProvider from "./components/ContextProviders/ModalContextProvider";
 import { getCategories } from "./DAL/api";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import ModalContextProvider from "./components/ContextProviders/ModalContextProvider";
 
 function App() {
   const [categories, setCategories] = useState([]);
+  const inputElement = useRef();
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function getData() {
       setCategories(await getCategories());
@@ -56,6 +60,7 @@ function App() {
             <img src="/logo.png" id="logo" alt="logo" />
             <InputGroup id="search">
               <Form.Control
+                ref={inputElement}
                 placeholder="Search"
                 aria-label="Search"
                 aria-describedby="button-search"
@@ -64,6 +69,9 @@ function App() {
                 variant="outline-secondary"
                 className="shadow-none"
                 id="button-search"
+                onClick={() => {
+                  navigate(`/search?q=${inputElement.current.value}`);
+                }}
               >
                 Search
               </Button>
@@ -78,6 +86,7 @@ function App() {
                 element={<HomePage categories={categories} />}
               />
               <Route path="/login" element={<Login />} />
+              <Route path="/search" element={<Search />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />

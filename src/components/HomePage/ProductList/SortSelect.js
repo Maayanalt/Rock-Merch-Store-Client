@@ -12,9 +12,10 @@ function SortSelect({ updateQueryValues, searchParams, setSearchParams }) {
 
   return (
     <Col
-      xs={9}
+      xs={11}
+      md={6}
       lg={6}
-      className="d-flex align-items-center justify-content-end gap-2 mb-4"
+      className="d-flex align-items-center justify-content-md-end gap-2 mb-4"
     >
       <span>Sort by:</span>
       <div style={{ width: "11rem" }}>

@@ -31,7 +31,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
             <Carousel.Item key={idx} className="card-img-top">
               <img
                 src={image.src}
-                className="d-block w-75 m-auto"
+                className="d-block w-75 m-auto img-card"
                 alt={image.alt}
               />
             </Carousel.Item>
@@ -41,7 +41,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
           className="wishlist"
           onClick={addToWishlist}
         ></IoHeartCircleSharp>
-        <Card.Body className="card-body">
+        <Card.Body className="d-flex flex-column justify-content-end">
           <Link
             to={`/item/${productID}`}
             state={{
@@ -51,7 +51,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
               description,
               price,
             }}
-            className="product-title"
+            className="product-title mb-auto"
           >
             <Card.Title>{name}</Card.Title>
           </Link>

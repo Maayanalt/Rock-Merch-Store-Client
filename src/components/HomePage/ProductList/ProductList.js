@@ -88,8 +88,8 @@ function ProductList({ categoryName, setCategoryName }) {
     >
       {products ? (
         <div>
-          <Row className="justify-content-between align-items-start">
-            <Col xs={3} lg={4}>
+          <Row className="justify-content-between align-items-start flex-column flex-md-row">
+            <Col xs={11} md={6} lg={4}>
               <h3>{categoryName}</h3>
             </Col>
             <SortSelect
@@ -98,7 +98,7 @@ function ProductList({ categoryName, setCategoryName }) {
               setSearchParams={setSearchParams}
             ></SortSelect>
           </Row>
-          <Row className="row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 gap-md-0 gap-lg-0 gap-xl-0">
+          <Row className="row-cols-2 row-cols-lg-3 gap-md-0 gap-lg-0 gap-xl-0">
             {products.map((product, idx) => (
               <ProductCard
                 key={idx}

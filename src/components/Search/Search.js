@@ -62,11 +62,11 @@ function Search() {
   }, [searchParams, getData]);
 
   return (
-    <Row className="mx-md-3 mx-sm-4 mx-lg-4 mx-xl-4 mb-5 p-0">
+    <Row className="mx-md-3 mx-sm-4 mx-lg-4 mx-xl-4 mb-5 px-2 p-lg-0">
       {products ? (
         <div>
           <Row className="justify-content-between align-items-start">
-            <Col xs={5} sm={5} md={4} lg={6}>
+            <Col xs={11} md={5}>
               <h4>Search results for: {searchString}</h4>
             </Col>
             <SortSelect
@@ -75,7 +75,7 @@ function Search() {
               setSearchParams={setSearchParams}
             ></SortSelect>
           </Row>
-          <Row className="row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 gap-md-0 gap-lg-0 gap-xl-0">
+          <Row className="row-cols-2 row-cols-md-3 row-cols-lg-4 gap-md-0">
             {products.map((product, idx) => (
               <ProductCard
                 key={idx}

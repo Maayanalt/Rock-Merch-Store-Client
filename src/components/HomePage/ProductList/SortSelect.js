@@ -13,7 +13,7 @@ function SortSelect({ updateQueryValues, searchParams, setSearchParams }) {
   return (
     <Col
       xs={11}
-      md={6}
+      md={7}
       lg={6}
       className="d-flex align-items-center justify-content-md-end gap-2 mb-4"
     >

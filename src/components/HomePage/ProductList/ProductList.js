@@ -89,7 +89,7 @@ function ProductList({ categoryName, setCategoryName }) {
       {products ? (
         <div>
           <Row className="justify-content-between align-items-start flex-column flex-md-row">
-            <Col xs={11} md={6} lg={4}>
+            <Col xs={11} md={5} lg={4}>
               <h3>{categoryName}</h3>
             </Col>
             <SortSelect

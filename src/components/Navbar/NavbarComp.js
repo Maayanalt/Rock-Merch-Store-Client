@@ -13,34 +13,38 @@ import { Link } from "react-router-dom";
 
 function NavbarComp() {
   return (
-    <Navbar id="navbar" expand="sm" className="navbar-dark mb-4">
+    <Navbar
+      collapseOnSelect
+      id="navbar"
+      expand="sm"
+      className="navbar-dark mb-4"
+    >
       <Container fluid>
-        <Navbar.Toggle
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarToggler"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <Navbar.Toggle>
           <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
         <Navbar.Collapse className="justify-content-between" id="navbarToggler">
           <Nav>
-            <Nav.Link className="active mt-0" as={Link} to="/">
+            <Nav.Link className="active mt-0" as={Link} to="/" eventKey="1">
               <FontAwesomeIcon
                 icon={faHouse}
                 className="pe-2 pe-sm-2"
               ></FontAwesomeIcon>
               Home
             </Nav.Link>
-            <Nav.Link className="active mt-0" as={Link} to="/about">
+            <Nav.Link
+              className="active mt-0"
+              as={Link}
+              to="/about"
+              eventKey="2"
+            >
               <FontAwesomeIcon
                 icon={faCircleInfo}
                 className="pe-2 pe-sm-2"
               ></FontAwesomeIcon>
               About
             </Nav.Link>
-            <Nav.Link className="active mt-0" href="#">
+            <Nav.Link className="active mt-0" href="#" eventKey="3">
               <FontAwesomeIcon
                 icon={faEnvelope}
                 className="pe-2 pe-sm-2"
@@ -51,6 +55,7 @@ function NavbarComp() {
               className="active d-inline-block d-sm-none mt-0"
               as={Link}
               to="/my-account"
+              eventKey="4"
             >
               <FontAwesomeIcon
                 icon={faUser}
@@ -62,6 +67,7 @@ function NavbarComp() {
               className="active d-inline-block d-sm-none mt-0"
               as={Link}
               to="/cart"
+              eventKey="5"
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
@@ -73,6 +79,7 @@ function NavbarComp() {
               className="active d-inline-block d-sm-none mt-0"
               as={Link}
               to="/wishlist"
+              eventKey="6"
             >
               <FontAwesomeIcon
                 icon={faHeart}

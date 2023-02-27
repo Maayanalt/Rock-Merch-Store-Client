@@ -8,10 +8,10 @@ function OrderDetails() {
   const user = useOutletContext();
 
   return (
-    <div>
+    <div id="order-details">
       <Card className="mb-3">
         <Card.Header as="h5">Order Details</Card.Header>
-        <Card.Body className="p-4">
+        <Card.Body className="p-4 pb-0">
           <Card.Text>Your order has been dispatched</Card.Text>
           <Card.Text>Est. delivery {requiredDate}</Card.Text>
           {items.map((item, idx) => (
@@ -37,7 +37,7 @@ function OrderDetails() {
       <Card className="mb-3">
         <Card.Header as="h5">Delivery Details</Card.Header>
         <Card.Body>
-          <Card.Text className="fw-semibold">
+          <Card.Text className="fw-semibold mb-0 mb-xl-1">
             {user.firstName} {user.lastName}
           </Card.Text>
           <Card.Text className="mb-0">{deliveryDetails.address}</Card.Text>

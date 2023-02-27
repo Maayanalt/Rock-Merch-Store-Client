@@ -49,13 +49,21 @@
 }
 
 @media (max-width: 576px) and (orientation: portrait){
-  #address, #account-details, .edit-form {
+  #address, #account-details, #order-details, .edit-form {
     width: 88vw;
+  }
+
+  #orders {
+    width: 90vw;
   }
 }
 
 @media (min-width: 576px) and (orientation: portrait){
   #address, #account-details, .edit-form {
     width: 60vw;
+  }
+
+  #orders {
+    width: 68vw;
   }
 }

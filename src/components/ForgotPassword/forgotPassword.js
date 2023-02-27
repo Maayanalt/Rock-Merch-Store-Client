@@ -11,8 +11,8 @@ function ForgotPassword() {
   }
 
   return (
-    <Container className="px-4 mb-5">
-      <Alert key="1" variant="secondary" className="w-50">
+    <Container className="px-lg-4 mb-lg-5">
+      <Alert key="1" variant="secondary" className="w-lg-50">
         <Alert.Heading as="h2">Forgot Password</Alert.Heading>
         <hr />
         <p className="p-2">

@@ -23,7 +23,7 @@ function AccountDetails() {
   ];
 
   return (
-    <div>
+    <div id="account-details">
       <Card>
         <Card.Header as="h5">Account Details</Card.Header>
         <Card.Body className="p-4">

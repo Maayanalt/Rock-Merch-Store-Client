@@ -1,7 +1,7 @@
-function ErrorMessages(props) {
+function ErrorMessages({ errors }) {
   return (
     <div>
-      {props.errors.map((error, idx) => (
+      {errors.map((error, idx) => (
         <p key={idx} className="error mb-1">
           {error}
         </p>

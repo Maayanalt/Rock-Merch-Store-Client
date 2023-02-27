@@ -18,3 +18,9 @@
   text-decoration: none;
   color: #41464b;
 }
+
+@media (min-width: 992px) {
+  .w-lg-50 {
+    width: 50% !important;
+  }
+}

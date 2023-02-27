@@ -19,8 +19,8 @@ function Login() {
   }
 
   return (
-    <Container className="px-4 mb-5">
-      <Alert key="1" variant="secondary" className="w-50">
+    <Container className="px-lg-4 mb-lg-5">
+      <Alert key="1" variant="secondary" className="w-lg-50">
         <Alert.Heading as="h2">Login</Alert.Heading>
         <hr />
         <FormTemplate
@@ -33,12 +33,12 @@ function Login() {
         ></FormTemplate>
         <hr />
         <Row className="justify-content-between">
-          <Col lg={4}>
+          <Col xs={5} lg={4}>
             <Link to="/forgot-password" className="link-in-login">
               Forgot Password?
             </Link>
           </Col>
-          <Col lg={3}>
+          <Col xs={4} md={3}>
             <Link to="/register" className="link-in-login">
               New Member
             </Link>

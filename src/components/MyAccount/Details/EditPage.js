@@ -36,7 +36,7 @@ function EditPage() {
   }
 
   return (
-    <Card className="edit-form pt-3">
+    <Card className="edit-form pt-lg-3 p-2">
       <FormTemplate
         inputs={inputs}
         submit="Save Changes"

@@ -40,22 +40,22 @@
   color: white;
 }
 
-.edit-form {
+#address, .edit-form {
   width: 45vw;
 }
 
-#address {
-  width: 45vw;
+#account-details {
+  width: 71vw;
 }
 
 @media (max-width: 576px) and (orientation: portrait){
-  #address {
+  #address, #account-details, .edit-form {
     width: 88vw;
   }
 }
 
 @media (min-width: 576px) and (orientation: portrait){
-  #address {
+  #address, #account-details, .edit-form {
     width: 60vw;
   }
 }

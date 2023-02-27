@@ -45,5 +45,17 @@
 }
 
 #address {
-  width: 40vw;
+  width: 45vw;
+}
+
+@media (max-width: 576px) and (orientation: portrait){
+  #address {
+    width: 88vw;
+  }
+}
+
+@media (min-width: 576px) and (orientation: portrait){
+  #address {
+    width: 60vw;
+  }
 }

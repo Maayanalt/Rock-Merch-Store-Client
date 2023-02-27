@@ -19,7 +19,7 @@ function Overview() {
       </h2>
       <Button
         variant="outline-info"
-        className="shadow-none px-2 py-1 col-lg-2 mt-4"
+        className="shadow-none px-2 py-1 col-lg-2 mt-4 col-11"
         id="log-out"
         onClick={logOut}
       >

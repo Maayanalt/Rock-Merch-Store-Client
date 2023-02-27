@@ -72,18 +72,18 @@ function FormTemplate({ inputs, submit, postToServer }) {
       className="d-flex flex-column align-items-center"
     >
       {select.map((input, idx) => (
-        <Row className="w-75 mb-2" key={idx}>
+        <Row className="w-100 w-lg-75 mb-2" key={idx}>
           <SelectInput {...input} key={idx} func={validation}></SelectInput>
         </Row>
       ))}
       {text.map((input, idx) => (
-        <Row className="w-75 mb-2" key={idx}>
+        <Row className="w-100 w-lg-75 mb-2" key={idx}>
           <TextInput {...input} key={idx} func={validation}></TextInput>
         </Row>
       ))}
       <Button
         type="submit"
-        className="col-12 w-75 m-4"
+        className="col-12 w-100 w-lg-75 m-4"
         variant="dark"
         id="submit"
       >

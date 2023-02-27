@@ -18,7 +18,7 @@ function Orders() {
   return (
     <div>
       {orders ? (
-        <Card>
+        <Card id="orders">
           <Card.Header as="h5">My Orders</Card.Header>
           <Card.Body className="p-4">
             <Card.Text>displaying {orders.length} orders</Card.Text>
@@ -35,7 +35,7 @@ function Orders() {
                   city: order.city,
                   postalCode: order.postalCode,
                   country: order.country,
-                  phone: order.phone
+                  phone: order.phone,
                 }}
               ></OrderCard>
             ))}

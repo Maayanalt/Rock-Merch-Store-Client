@@ -1,15 +1,8 @@
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  ToggleButtonGroup,
-  ToggleButton,
-  Carousel,
-} from "react-bootstrap";
+import { Container, Row, Col, Button, Carousel } from "react-bootstrap";
+import SizesSelection from "../SizesSelection/SizesSelection";
 import { useEffect, useState } from "react";
 import "./ProductDetails.css";
-import { getOneProduct, postToWishlist } from "../../DAL/api";
+import { createToCart, getOneProduct, postToWishlist } from "../../DAL/api";
 import { organizeSizes } from "../../utilities/helpers";
 import { useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -17,6 +10,7 @@ import { toast } from "react-toastify";
 function ProductDetails() {
   // sizes = [{value: 'XS', disabled: true/false}...]
   const [itemDetails, setItemDetails] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("none");
   const { id } = useParams();
   const { state } = useLocation();
 
@@ -27,28 +21,37 @@ function ProductDetails() {
     }
   }
 
+  async function addToCart() {
+    let size = selectedSize;
+    if (size === "none") {
+      toast.warn("Must pick a size");
+      return;
+    }
+    if (size === "one size") size = null;
+    const success = await createToCart(id, size);
+    if (success) {
+      toast.success("Added item to cart");
+    }
+  }
+
   useEffect(() => {
     async function getData() {
       const item = await getOneProduct(id);
-      const sizes = organizeSizes(item.sizes);
-      setItemDetails({ ...item, sizes });
+      setItemDetails({ ...item });
     }
 
     if (state) {
-      const sizes = organizeSizes(state.sizes);
-      setItemDetails({ ...state, sizes });
+      setItemDetails({ ...state });
     } else {
       getData();
     }
   }, []);
 
-  const [radioValue, setRadioValue] = useState("1");
-
   return (
     <div>
       {itemDetails && (
-        <Container className="px-4" id="item">
-          <Row className="gx-5">
+        <Container className="px-4">
+          <Row className="gx-5 flex-column flex-xl-row">
             <Col className="d-flex justify-content-center">
               <Carousel
                 interval={null}
@@ -73,30 +76,18 @@ function ProductDetails() {
               <p>{itemDetails.description}</p>
               <span id="price">${itemDetails.price}</span>
               <span className="my-1">size</span>
-              <div>
-                <ToggleButtonGroup type="radio" name="size" required>
-                  {itemDetails.sizes.map((radio, idx) => (
-                    <ToggleButton
-                      key={idx}
-                      disabled={radio.disabled}
-                      id={`radio-${idx}`}
-                      type="radio"
-                      variant="outline-dark"
-                      name="size"
-                      value={radio.value}
-                      checked={radioValue === radio.value}
-                      className="shadow-none me-1"
-                      onChange={(e) => setRadioValue(e.currentTarget.value)}
-                    >
-                      {radio.value}
-                    </ToggleButton>
-                  ))}
-                </ToggleButtonGroup>
+              <div className="d-flex justify-content-center justify-content-xl-start">
+                <SizesSelection
+                  itemSizes={itemDetails.sizes}
+                  selectedSize={selectedSize}
+                  setSelectedSize={setSelectedSize}
+                ></SizesSelection>
               </div>
-              <Col md="7" className="d-flex flex-column gap-2 mt-3">
+              <Col xs={12} xl={7} className="d-flex flex-column gap-2 mt-3">
                 <Button
                   variant="outline-secondary"
-                  className="shadow-none me-1 add-to-cart"
+                  className="shadow-none add-to-cart"
+                  onClick={addToCart}
                 >
                   Add to cart
                 </Button>

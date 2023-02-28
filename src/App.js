@@ -115,7 +115,7 @@ function App() {
               <Route path="/checkout" element={<Checkout />} />
             </Routes>
           </main>
-          <footer className="mt-auto">
+          <footer className="pt-5">
             <p>©2022 Built by Maayan Altarac</p>
           </footer>
         </div>

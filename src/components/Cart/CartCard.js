@@ -1,6 +1,7 @@
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Form, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { postToWishlist } from "../../DAL/api";
 
 function CartCard({
@@ -14,9 +15,12 @@ function CartCard({
   trash,
   cartDetailID,
 }) {
-  function addToWishlist(id) {
-    postToWishlist(id);
-    trash(cartDetailID);
+  async function addToWishlist(id) {
+    const success = await postToWishlist(id);
+    if (success) {
+      toast.success("Added item to wishlist");
+      trash(cartDetailID);
+    }
   }
 
   return (

@@ -95,9 +95,9 @@ function App() {
               <Route
                 path="/wishlist"
                 element={
-                  <ModalContextProvider
-                    component={Wishlist}
-                  ></ModalContextProvider>
+                  <ModalContextProvider>
+                    <Wishlist></Wishlist>
+                  </ModalContextProvider>
                 }
               />
               <Route path="/item/:id" element={<ProductDetails />} />

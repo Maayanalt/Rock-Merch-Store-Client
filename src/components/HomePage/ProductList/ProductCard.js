@@ -41,7 +41,7 @@ function ProductCard({ images, name, sizes, price, description, productID }) {
           className="wishlist"
           onClick={addToWishlist}
         ></IoHeartCircleSharp>
-        <Card.Body className="d-flex flex-column justify-content-end">
+        <Card.Body className="d-flex flex-column justify-content-end pt-1">
           <Link
             to={`/item/${productID}`}
             state={{

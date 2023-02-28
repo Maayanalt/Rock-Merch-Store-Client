@@ -4,12 +4,12 @@ import CartModal from "../CartModal/CartModal";
 export const CartModalValueContext = createContext(null);
 export const CartModalDispatchContext = createContext(null);
 
-export function ModalContextProvider({ component: Component, props }) {
+export function ModalContextProvider({ children }) {
   const [modalProps, setModalProps] = useState({ show: false });
 
   return (
     <CartModalDispatchContext.Provider value={setModalProps}>
-      <Component {...props}></Component>
+      {children}
       <CartModalValueContext.Provider value={modalProps}>
         <CartModal></CartModal>
       </CartModalValueContext.Provider>

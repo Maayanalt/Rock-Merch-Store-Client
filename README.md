@@ -1,4 +1,4 @@
-# Rock Merch online store frontend - ***in progress***
+# Rock Merch online store frontend
 
 The scope of the project is to develop internet store functionality for study purposes. Selling rock band merchandise, media and more.
 
@@ -12,7 +12,7 @@ The scope of the project is to develop internet store functionality for study pu
 - [Prettier](https://prettier.io/ "Prettier") - code formatting
 
 ## 📌Features
-The application displays an online store that contains products.
+The application displays an online store that contains products with a fully responsive design.
 <br>
 Users can do the following:
 - [x] Login
@@ -21,6 +21,8 @@ Users can do the following:
 - [x] See product details on a single product page and choose a size
 - [x] Browse available products from home page
 - [x] Filter products by category
+- [x] Search products - filtering by name or description
+- [x] Sort products by best-seller, from highest to lowest price and from lowest to highest price
 - [x] Change user's details, address (a user must be logged in)
 - [x] Add products to the wishlist from home page (a user must be logged in)
 - [x] Remove products from the wishlist (a user must be logged in)
@@ -33,9 +35,10 @@ Users can do the following:
 - [x] View user's orders (a user must be logged in)
 
 ## Demo
-> Home page and product details page
+> Home page
 
-![home-page-gif](https://user-images.githubusercontent.com/75583578/213934608-011321cd-62de-402b-95cb-6daea5d0fc32.gif)
+![home](https://user-images.githubusercontent.com/75583578/221965755-e25e6a28-b3ce-4ab3-b51b-55aa8f9b532d.gif)
+![home-mobile](https://user-images.githubusercontent.com/75583578/221966345-299cf11a-92ae-4dec-8acb-9a9aa958d7ae.gif)
 > Cart and checkout page
 
 ![cart](https://user-images.githubusercontent.com/75583578/214094607-0eaac19a-bbb8-4b38-97c4-7cba7bf6ad8f.gif)

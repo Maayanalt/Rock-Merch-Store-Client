@@ -6,12 +6,18 @@ footer {
   color: #576f72;
 }
 
-#navbar {
-  background-color: #576f72;
+main {
+  flex-grow: 1;
 }
 
 #container {
+  display: flex;
+  flex-flow: column nowrap;
   min-height: 100vh;
+}
+
+#navbar {
+  background-color: #576f72;
 }
 
 #button-search:hover,

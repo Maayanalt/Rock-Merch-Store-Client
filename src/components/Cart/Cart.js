@@ -62,15 +62,15 @@ function Cart() {
       return item.size === size && item.item.id === itemID;
     });
     if (sameItem.length > 1) {
-      let exisitingItem;
+      let existingItem;
       sameItem[1].id === idToBeRemoved
-        ? (exisitingItem = sameItem[0])
-        : (exisitingItem = sameItem[1]);
-      exisitingItem.quantity = sameItem[1].quantity + sameItem[0].quantity;
+        ? (existingItem = sameItem[0])
+        : (existingItem = sameItem[1]);
+      existingItem.quantity = sameItem[1].quantity + sameItem[0].quantity;
       updateCartDuplicates(
         idToBeRemoved,
-        exisitingItem.item.id,
-        exisitingItem.quantity,
+        existingItem.item.id,
+        existingItem.quantity,
         size
       );
       items.forEach((item, idx) => {
@@ -166,7 +166,7 @@ function Cart() {
 
   return (
     <div>
-      <Card className="m-5 mt-1">
+      <Card className="m-1 m-lg-5 mt-lg-2">
         <Card.Header as="h5">
           Item Summary({calculateTotalQuantity()})
         </Card.Header>
@@ -176,7 +176,7 @@ function Cart() {
               <Table hover id="table">
                 <thead>
                   <tr>
-                    <th>PRODUCTE DETAILS</th>
+                    <th>PRODUCT DETAILS</th>
                     <th>PRICE</th>
                     <th>QTY</th>
                     <th>TOTAL</th>
@@ -221,7 +221,7 @@ function Cart() {
                 </tbody>
               </Table>
               <Row className="justify-content-between">
-                <Col xs={2}>
+                <Col xs={5} lg={2}>
                   <Button
                     variant="outline-secondary"
                     id="edit"
@@ -230,7 +230,7 @@ function Cart() {
                     {editMode ? "Cancel" : "Edit Cart"}
                   </Button>
                 </Col>
-                <Col xs={1}>
+                <Col xs={2} md={1} className="me-3 me-lg-0">
                   {editMode && (
                     <Button
                       variant="danger"
@@ -251,7 +251,7 @@ function Cart() {
       </Card>
 
       {itemsDetails.length ? (
-        <Card className="m-5">
+        <Card className="m-1 mt-2 m-lg-5">
           <Card.Header as="h5">Order Summary</Card.Header>
           <Card.Body className="d-flex justify-content-between align-items-center">
             <Card.Text>Subtotal: ${subtotal}</Card.Text>

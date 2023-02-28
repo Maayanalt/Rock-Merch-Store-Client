@@ -16,10 +16,12 @@ function HomePage({ categories }) {
           setCategoryName={setCategoryName}
         ></SideNavbar>
       </Col>
-      <ModalContextProvider
-        component={ProductList}
-        props={{ categoryName, setCategoryName }}
-      ></ModalContextProvider>
+      <ModalContextProvider>
+        <ProductList
+          categoryName={categoryName}
+          setCategoryName={setCategoryName}
+        ></ProductList>
+      </ModalContextProvider>
     </Row>
   );
 }

@@ -38,11 +38,13 @@ Users can do the following:
 > Home page
 
 ![home](https://user-images.githubusercontent.com/75583578/221965755-e25e6a28-b3ce-4ab3-b51b-55aa8f9b532d.gif)
-![home-mobile](https://user-images.githubusercontent.com/75583578/221966345-299cf11a-92ae-4dec-8acb-9a9aa958d7ae.gif)
+![home-mobile](https://user-images.githubusercontent.com/75583578/222231516-392009d2-339f-4569-9037-6b00112b4ddd.gif)
+
 > Search page
 
 ![search](https://user-images.githubusercontent.com/75583578/222152463-3f4d211b-9ee5-4e4c-8d61-635955b68991.gif)
 ![search-mobile](https://user-images.githubusercontent.com/75583578/222227957-04558392-bcbf-4f0c-b59f-581b0560c420.gif)
+
 > Cart and checkout page
 
 ![cart](https://user-images.githubusercontent.com/75583578/214094607-0eaac19a-bbb8-4b38-97c4-7cba7bf6ad8f.gif)

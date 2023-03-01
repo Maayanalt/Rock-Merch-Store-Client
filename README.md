@@ -42,7 +42,7 @@ Users can do the following:
 > Search page
 
 ![search](https://user-images.githubusercontent.com/75583578/222152463-3f4d211b-9ee5-4e4c-8d61-635955b68991.gif)
-![search-mobile](https://user-images.githubusercontent.com/75583578/222153335-b6a5dac2-3ab3-455f-a51c-e9a712d3a786.gif)
+![search-mobile](https://user-images.githubusercontent.com/75583578/222227957-04558392-bcbf-4f0c-b59f-581b0560c420.gif)
 > Cart and checkout page
 
 ![cart](https://user-images.githubusercontent.com/75583578/214094607-0eaac19a-bbb8-4b38-97c4-7cba7bf6ad8f.gif)

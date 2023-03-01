@@ -39,12 +39,14 @@ Users can do the following:
 
 ![home](https://user-images.githubusercontent.com/75583578/221965755-e25e6a28-b3ce-4ab3-b51b-55aa8f9b532d.gif)
 ![home-mobile](https://user-images.githubusercontent.com/75583578/222231516-392009d2-339f-4569-9037-6b00112b4ddd.gif)
-
 > Search page
 
 ![search](https://user-images.githubusercontent.com/75583578/222152463-3f4d211b-9ee5-4e4c-8d61-635955b68991.gif)
 ![search-mobile](https://user-images.githubusercontent.com/75583578/222251373-9938bac5-9b7f-4520-bfb2-35a9ed52fb21.gif)
+> Product details page
 
+![product-details](https://user-images.githubusercontent.com/75583578/222256335-df662bf2-d7c0-4ee2-b83a-e3b29bc73b73.gif)
+![product-details-mobile](https://user-images.githubusercontent.com/75583578/222257574-f1739c5f-6deb-4ee9-84ee-a6ec6b222746.gif)
 > Cart and checkout page
 
 ![cart](https://user-images.githubusercontent.com/75583578/214094607-0eaac19a-bbb8-4b38-97c4-7cba7bf6ad8f.gif)

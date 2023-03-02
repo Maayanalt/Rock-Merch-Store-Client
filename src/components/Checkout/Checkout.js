@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import inputTypes from "../../DAL/formData";
 import FormTemplate from "../Form/FormTemplate";
 import CheckoutItem from "./CheckoutItem";
-import party, { Circle, Rect } from "party-js";
+import party, { Rect } from "party-js";
 import "./Checkout.css";
 import { useEffect, useState } from "react";
 import { createOrder, getUser } from "../../DAL/api";
@@ -53,10 +53,10 @@ function Checkout() {
     <Row className="p-1 mx-0 mb-5 justify-content-center">
       {showModal && <CheckoutModal show={showModal}></CheckoutModal>}
       <Col lg={5}>
-        <Card>
+        <Card className="mb-3">
           <Card.Header as="h5">Shipping Address</Card.Header>
-          <Card.Body className="px-0">
-            <div className="d-flex justify-content-between px-4 mb-1">
+          <Card.Body className="px-1 pb-0 pb-lg-2 px-lg-0">
+            <div className="d-flex justify-content-between px-2 px-lg-4 mb-lg-1 mb-3">
               <Form.Check
                 type="radio"
                 label="Different address"
@@ -79,7 +79,7 @@ function Checkout() {
             </div>
             {showMyAddress && (
               <div className="d-flex flex-column align-items-center">
-                <div className="pt-1 ps-2 ms-4 mt-3" id="my-address">
+                <div className="pt-1 ps-2 mt-3 ms-xl-4" id="my-address">
                   {Object.values(myAddress).map((key, idx) => (
                     <p key={idx} className="lh-base mb-1">
                       {key}

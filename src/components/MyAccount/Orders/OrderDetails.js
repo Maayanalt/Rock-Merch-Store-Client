@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation, useOutletContext } from "react-router-dom";
 import OrderItem from "./OrderItem";
@@ -6,6 +7,10 @@ function OrderDetails() {
   const { state } = useLocation();
   const { id, orderDate, requiredDate, total, items, deliveryDetails } = state;
   const user = useOutletContext();
+
+  useEffect(() => {
+    window.scrollTo(0, 140);
+  }, []);
 
   return (
     <div id="order-details">

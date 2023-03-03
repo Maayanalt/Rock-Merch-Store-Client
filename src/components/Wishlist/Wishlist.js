@@ -1,11 +1,11 @@
 import { Card, Col } from "react-bootstrap";
 import WishlistCard from "./WishlistCard";
-import "./Wishlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import { deleteFromWishlist, getWishlist } from "../../DAL/api";
 import { useNavigate } from "react-router-dom";
+import "./Wishlist.css";
 
 function Wishlist() {
   const [items, setItems] = useState([]);
@@ -30,16 +30,18 @@ function Wishlist() {
   }, []);
 
   return (
-    <Card className="m-5 mt-1">
+    <Card className="m-1 mt-md-1 m-md-2 m-lg-3 mt-lg-2">
       <Card.Header as="h5">Wishlist</Card.Header>
-      <Card.Body className="p-4 row">
+      <Card.Body className="p-3 pt-1 p-lg-3 row row-cols-2 row-cols-md-3">
         {items.length ? (
           items.map((item, idx) => (
-            <Col md={6} key={idx}>
+            <Col md={4} key={idx} className="p-0 px-lg-2 pb-lg-3">
               <WishlistCard
                 sizes={item.item.sizes}
                 title={item.item.name}
-                img={item.item.images[0]}
+                images={item.item.images}
+                price={item.item.price}
+                description={item.item.description}
                 productID={item.item.id}
                 onDelete={onDelete}
               ></WishlistCard>

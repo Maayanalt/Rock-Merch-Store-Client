@@ -7,3 +7,49 @@
   background-color: #7d9d9c;
   color: white;
 }
+
+.wishlist-card {
+  min-height: 100%;
+}
+
+@media (max-width: 576px){
+  .img-wishlist {
+    max-height: 140px;
+  }
+
+  .wishlist-title{
+    font-size:medium;
+  }
+}
+
+@media (min-width: 576px){
+  .img-wishlist {
+    max-height: 140px;
+  }
+
+  .wishlist-title{
+    font-size: medium;
+  }
+}
+
+@media (min-width: 768px){
+  .img-wishlist {
+    max-height: 170px;
+  }
+  .wishlist-title{
+    font-size: larger;
+  }
+}
+
+@media (min-width: 992px) and (orientation: portrait){
+  .img-wishlist {
+    max-height: 200px;
+  }
+}
+
+@media (min-width: 992px) and (orientation: landscape){
+  .img-wishlist {
+    max-height: 200px;
+    max-width: 160px;
+  }
+}

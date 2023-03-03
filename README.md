@@ -49,10 +49,12 @@ Users can do the following:
 ![product-details-mobile](https://user-images.githubusercontent.com/75583578/222257574-f1739c5f-6deb-4ee9-84ee-a6ec6b222746.gif)
 > Cart and checkout page
 
-![cart](https://user-images.githubusercontent.com/75583578/214094607-0eaac19a-bbb8-4b38-97c4-7cba7bf6ad8f.gif)
+![cart-checkout](https://user-images.githubusercontent.com/75583578/222756548-6e2be28a-ff19-4247-b5cb-927a42ab3fe5.gif)
+![cart-mobile](https://user-images.githubusercontent.com/75583578/222759039-d4091e5f-4431-45a4-b2be-15620d611e76.gif)
 > My account page
 
-![my-account](https://user-images.githubusercontent.com/75583578/215320787-e51b7468-78bc-4158-99e3-4c37b73c83c5.gif)
+![my-account](https://user-images.githubusercontent.com/75583578/222764900-7f188181-c236-43e7-9e28-b3e3e949c7cd.gif)
+![my-account-mobile](https://user-images.githubusercontent.com/75583578/222766897-88b190da-cfe9-4af2-a4a8-bef88dea9133.gif)
 > Wishlist page
 
 ![wishlist](https://user-images.githubusercontent.com/75583578/218730915-e8a3b241-aaa2-4893-a761-c19edd94ad7d.gif)

@@ -57,4 +57,5 @@ Users can do the following:
 ![my-account-mobile](https://user-images.githubusercontent.com/75583578/222766897-88b190da-cfe9-4af2-a4a8-bef88dea9133.gif)
 > Wishlist page
 
-![wishlist](https://user-images.githubusercontent.com/75583578/218730915-e8a3b241-aaa2-4893-a761-c19edd94ad7d.gif)
+![wishlist](https://user-images.githubusercontent.com/75583578/222771972-6b1367c5-5d38-401f-9ba9-7df01c95fc3f.gif)
+![wishlist-mobile](https://user-images.githubusercontent.com/75583578/222773194-d8f1cd86-e1ac-4532-b3d5-90d8b6e9aed7.gif)

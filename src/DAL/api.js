@@ -105,6 +105,7 @@ export async function postLogin(email, password) {
     {
       method: "POST",
       credentials: "include",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
